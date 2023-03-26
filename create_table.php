@@ -41,6 +41,7 @@
                                                 user_lname CHAR(100) NOT NULL,
                                                 user_email CHAR(100) NOT NULL,
                                                 user_password CHAR(20) NOT NULL,
+                                                user_role CHAR(20) NOT NULL,
                                                 uni_id INTEGER
                                                 PRIMARY KEY(user_id),
                                                 FOREIGN KEY(uni_id) REFERENCES University
@@ -136,5 +137,6 @@
 
     $connect->close();
 
+    // this line needs to be removed
     echo "SUCCESS!";
 ?>
