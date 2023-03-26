@@ -8,15 +8,17 @@
 
         <div>
             <nav>
-                <a class="nav_text" href = "public_event.html">Events</a>
-                <a class="nav_text" href = "rso_event.html">RSO Events</a>
+                <a class="nav_text" href = "public_event.php">Events</a>
+                <a class="nav_text" href = "rso_event.php">RSO Events</a>
             </nav>
         </div>
 
     </head>
 
     <body>
-        <form action="login.php" method="post">
+        <?php require 'create_table.php'?>
+
+        <form action="sign_in_user.php" method="post">
             <h1>LOGIN</h1>
             <div class="login_form_text">
                 <label for="username">Username: </label>
