@@ -81,22 +81,22 @@
     )";
     $status = mysqli_query($connect, $sql);
 
-    $sql = "INSERT INTO University(uni_name, uni_address, uni_description) 
-            VALUE ('University of Central Florida', '4000 Central Florida Blvd, Orlando, Fl, 32816', 
-                    'Home of Knights')";
-    $status = mysqli_query($connect, $sql);
+    // $sql = "INSERT INTO University(uni_name, uni_address, uni_description) 
+    //         VALUE ('University of Central Florida', '4000 Central Florida Blvd, Orlando, Fl, 32816', 
+    //                 'Home of Knights')";
+    // $status = mysqli_query($connect, $sql);
 
-    $sql = "INSERT INTO University(uni_name, uni_address, uni_description) 
-            VALUE ('University of Florida', 'Gainesville, Fl, 32611', 'Home of Gators')";
-    $status = mysqli_query($connect, $sql);
+    // $sql = "INSERT INTO University(uni_name, uni_address, uni_description) 
+    //         VALUE ('University of Florida', 'Gainesville, Fl, 32611', 'Home of Gators')";
+    // $status = mysqli_query($connect, $sql);
 
-    $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
-             VALUE ('John', 'Will', 'student', '1', 'john@knights.ucf.edu', 'john')";
-    $status = mysqli_query($connect, $sql);
+    // $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+    //          VALUE ('John', 'Will', 'student', '1', 'john@knights.ucf.edu', 'john')";
+    // $status = mysqli_query($connect, $sql);
 
-    $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
-             VALUE ('Josh', 'someone', 'admin', '1', 'josh@knights.ucf.edu', 'josh')";
-    $status = mysqli_query($connect, $sql);
+    // $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+    //          VALUE ('Josh', 'someone', 'admin', '1', 'josh@knights.ucf.edu', 'josh')";
+    // $status = mysqli_query($connect, $sql);
 
     $connect->close();
 
