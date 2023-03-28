@@ -1,12 +1,10 @@
-<!-- check for existing user id or email -->
+<!-- check for necessary conditions for creating an RSO -->
 <?php
 	// input taken from the user
-	$user_fname = $_POST["user_fname"];
-	$user_lname = $_POST["user_lname"];
-	$user_email = $_POST["user_email"];
-	$user_password = $_POST["user_password"];
-	$user_role = $_POST["user_role"];
-	$uni_name = $_POST["user_uni_name"];
+	$first_user_email = $_POST["first_user_email"];
+	$second_user_email = $_POST["second_user_email"];
+	$third_user_email = $_POST["third_user_email"];
+	$fourth_user_email = $_POST["fourth_user_email"];
 
 	$db_servername = "localhost";
     $db_username = "root";
@@ -19,10 +17,25 @@
         die("Connection failed");
     }
 
-	// get the uni_id of where the user is trying to register
-	$sql = "SELECT * FROM UNIVERSITY WHERE uni_name = '$uni_name'";
+	// get all of the user emails
+	$sql = "SELECT user_email FROM users";
 	$result = mysqli_query($connect, $sql);
 	$info = mysqli_fetch_array($result);
+
+	$infoLength = count($info);
+
+	for ($i = 0; $i < $infoLength; $i++)
+	{
+		$initial_query = "SELECT * FROM users WHERE user_email = '$info[$i]'";
+		
+		$result = mysqli_query($connect, $initial_query);
+
+		if (mysqli_num_rows($result) > 0)
+		{
+			echo "Email already exists!";
+		header("location:registration_page.php");
+		}
+	}
 
 	$uni_id = $info['uni_id'];
 
