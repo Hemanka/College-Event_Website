@@ -1,3 +1,7 @@
+<?php
+    session_unset();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,11 +9,12 @@
 
         <meta name="viewpoint" content="width=device-width">
 
-        <link rel="stylesheet" href="style.css" />
+        <!-- <link rel="stylesheet" href="style.css" /> -->
+        <style><?php include 'style.css'?></style>
 
         <div>
             <nav>
-                <a class="nav_text" href="login.php">login</a>
+                <a class="logout_text" href="login.php">Log in</a>
             </nav>
         </div>
     </head>

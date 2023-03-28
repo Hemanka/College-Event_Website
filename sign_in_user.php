@@ -1,4 +1,6 @@
 <?php 
+    session_start();
+
     $username = $_POST["username"];
     $password = $_POST["password"];
 
@@ -28,6 +30,9 @@
             // $GLOBALS["current_user_id"] = $info["user_id"];
             // $GLOBALS["current_user_role"] = $info["user_role"];
             // $GLOBALS["current_user_uni_id"] = $info["uni_id"];
+
+            $_SESSION["current_user_id"] = $info["user_id"];
+            $_SESSION["current_user_role"] = $info["user_role"];
             header("location: public_event.php");
         }
         else

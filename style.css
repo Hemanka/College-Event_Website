@@ -2,7 +2,7 @@ nav {
     border-style: hidden;
     background-color: lightgoldenrodyellow;
     margin-top: 5%;
-    padding: 2%;
+    padding: 2% 1%;
     
     /*
     display: inline;
@@ -11,10 +11,10 @@ nav {
 }
 
 
-.nav_text {
-    color: black;
-    font-size: 25px;
-    margin: 1%;
+/* .nav_text {
+    /* color: black; */
+    /* font-size: 25px; */
+    /* margin: 1%; */
     /*
     margin-left: 25px;
     margin-right: 25px;
@@ -22,6 +22,19 @@ nav {
     padding: 200px;
     */
     
+/* } */
+
+a {
+    /* display: inline-block; */
+    text-decoration: none;
+    color:black;
+    font-size: 20px;
+    padding: 2% 0.8%
+}
+
+a:hover {
+    background-color: orange;
+    color: white;
 }
 
 .logout_text {

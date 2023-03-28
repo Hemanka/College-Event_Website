@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login Page</title>
+        <title>RSO Events</title>
 
         <meta name="viewpoint" content="width=device-width">
 
