@@ -43,12 +43,19 @@
         die("Connection failed");
     }
 
+	// check for empty rso entry
+	if (empty($new_rso_name))
+	{
+		echo "Must enter RSO name";
+	}
+
 	// check for duplicate RSO:
+	// could make string all uppercase with strtoupper(str)
 	$sql = "SELECT * FROM rso WHERE rso_name = '$new_rso_name'";
 	$rso_result = mysqli_query($connect, $sql);
-	$info = mysqli_fetch_array($result);
+	$rso_info = mysqli_fetch_array($rso_result);
 
-	if (mysqli_num_rows($result) > 0)
+	if (mysqli_num_rows($rso_result) > 0)
 	{
 		echo "RSO already exists!";
 		header("location:create_rso_page.php");
@@ -64,44 +71,81 @@
 	// get all of the current user emails
 	$sql = "SELECT user_email FROM users";
 	$result = mysqli_query($connect, $sql);
-	$info = mysqli_fetch_array($result);
+	$userEmailArray = mysqli_fetch_row($result);
 
-	$infoLength = count($info);
+	while ($email = mysqli_fetch_column($result, 1))
+	{
+		array_push($userEmailArray, $email);
+	}
 
-	for ($i = 0; $i < $infoLength; $i++)
+	$UEALength = count($userEmailArray);
+
+	$uniIds = array();
+	$userIds = array();
+
+	for ($i = 0; $i < $UEALength; $i++)
 	{
 		// find current email in the user_email array
 		$initial_query = "SELECT * FROM users WHERE user_email = '$info[$i]'";
 		
 		$result = mysqli_query($connect, $initial_query);
 
-		// if the current email does not exists, display error msg and redirect to create_rso_page
+		// if the current email does not exist, display error msg and redirect to create_rso_page
 		if (mysqli_num_rows($result) == 0)
 		{
-			echo "Email does not exist!";
+			echo "One or more emails entered do not exist!";
 			header("location:create_rso_page.php");
 		}
 
-		// SELECT user_email, uni_id FROM users WHERE user_email = (SELECT uni_id FROM users where )
+		// get uni_id and user_ids
+		$emailArray = mysqli_fetch_array($result);
+
+		array_push($uniIds, $emailArray["uni_id"]);
+		array_push($userIds, $emailArray["user_id"]);
+
+		// checks if each user entered go to the same university by comparing uni_ids
+		if (!empty($uniIds) && $info[$i+1] != null)
+		{
+			if ($uniIds[$i] != $uniIds[$i+1])
+			{
+				echo "One or more emails are from different Universities!";
+				header("location:create_rso_page.php");
+			}
+		}
 	}
 
 	// insert rso:
-	// dont know how to get uni_id
+	$uni = $uniIds[0];
 	$status = "active";
-	$insert_query = "INSERT INTO rso (rso_name, rso_status, uni_id) VALUES ('$new_rso_name', '$status', $uni_id)";
+	$insert_query = "INSERT INTO rso (rso_name, rso_status, uni_id) 
+					 VALUES ('$new_rso_name', '$status', $uni)";
 
 	$result = mysqli_query($connect, $insert_query);
 
-	if ($result)
-	{
-		echo "<b> RSO successfully created!</b>";
-	}
-	else
+	if (!$result)
 	{
 		echo "<b>Unable to create RSO.</b>";
+		header("location:create_rso_page.php");
 	}
 
-	// insert members using the newly created rso's id
+	// insert members using the newly created rso's id:
+	$rsoId = $rso_info["rso_id"];
+
+	$UIlength = count($userIds);
+
+	for ($i = 0; $i < $UIlength; $i++)
+	{
+		$insert_query = "INSERT INTO member_rso (member_id rso_id user_id) VALUES ('$rsoId', '$userIds[$i]')";
+		$result = mysqli_query($connect, $insert_query);
+
+		if (!$result)
+		{
+			echo "Error adding user";
+			header("location:create_rso_page.php");
+		}
+	}
+
+	echo "<b>RSO successfully created!</b>";
 
 	$connect->close();
 ?>
