@@ -9,7 +9,7 @@
 
     <body>
 
-        <form action="sign_in_user.php" method="post">
+        <form action="create_rso.php" method="post">
             <h1>Create New RSO</h1>
 
             <div class="login_form_text">
@@ -36,13 +36,13 @@
                 <br>
                 <br>
 
-                <label for="third_user_email">Person 2 Email address: </label>
+                <label for="third_user_email">Person 3 Email address: </label>
                 <input type="text" id="third_user_email" name="third_user_email">
                 
                 <br>
                 <br>
 
-                <label for="fourth_user_email">Person Email address: </label>
+                <label for="fourth_user_email">Person 4 Email address: </label>
                 <input type="text" id="fourth_user_email" name="fourth_user_email">
                 
                 <br>
