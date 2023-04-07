@@ -14,7 +14,7 @@
                 <a class="nav_text" href = "rso_event.php">RSO Events</a>
                 <a class="nav_text" href = "create_rso_page.php">Create New RSO</a>
                 <a class="nav_text" href = "">Create New Event</a>
-                <a class="logout_text" href = "logout.php">Log out</a>
+                <a class="nav_text logout_text" href = "logout.php">Log out</a>
             </nav>
         </div>
 

@@ -6,13 +6,16 @@
         <title>Login Page</title>
         <meta name="viewpoint" content="width=device-width">
 
-        <link rel="stylesheet" href = "style.css" />
+        <!-- <link rel="stylesheet" href = "style.css" /> -->
+        <style><?php include 'style.css'?></style>
 
     </head>
 
     <body>
 
-        <form action="sign_in_user.php" method="post">
+        <!-- <div class="user_info"> -->
+        <!-- <div> -->
+        <form id="usersInfo" action="sign_in_user.php" method="post">
             <h1>LOGIN</h1>
 
             <div class="login_form_text">
@@ -31,6 +34,8 @@
                 <button type="submit">Log in</button>
             </div>
         </form>
+        <!-- </div> -->
+        <!-- </div> -->
 
         
 

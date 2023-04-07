@@ -25,17 +25,34 @@ nav {
 /* } */
 
 a {
-    /* display: inline-block; */
+    text-decoration: none;
+    color:black;
+}
+
+.nav_text {
     text-decoration: none;
     color:black;
     font-size: 20px;
-    padding: 2% 0.8%
+    padding: 2% 0.8%;
+}
+
+.nav_text:hover {
+    background-color: orange;
+    color: white;
+}
+
+/* a { */
+    /* display: inline-block; */
+    /* text-decoration: none;
+    color:black;
+    font-size: 20px;
+    padding: 2% 0.8%;
 }
 
 a:hover {
     background-color: orange;
     color: white;
-}
+} */
 
 .logout_text {
     float: right;
@@ -45,10 +62,48 @@ a:hover {
     margin: 5%;
 }
 
-form {
+#usersInfo {
     background-color: aqua;
     margin-top: 3%;
     margin-left: 15%;
     margin-right: 15%;
     padding: 3%;
 }
+
+/* button {
+    background-color: red;
+} */
+
+.comment_button {
+    margin-left: 0.5%;
+    padding: 2% 0.8%;
+    vertical-align: top;
+}
+
+.events_info {
+    margin-left: 1%;
+
+}
+
+.events_info {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    background-color: rgb(93, 240, 161);
+}
+
+#done_editing_button {
+    margin-left: 0.5%;
+    padding: 1.3% 1%;
+    vertical-align: top;
+}
+
+/* .comment_text {
+    display:inline-block;
+} */
+
+/* need to indent before showing the information */
+/* table {
+    margin-left: 15%; 
+} */

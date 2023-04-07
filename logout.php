@@ -14,7 +14,7 @@
 
         <div>
             <nav>
-                <a class="logout_text" href="login.php">Log in</a>
+                <a class="nav_text logout_text" href="login.php">Log in</a>
             </nav>
         </div>
     </head>
