@@ -50,18 +50,19 @@
             // $_SESSION["current_user_role"] = "Student";
             if (isset($_SESSION["current_user_role"]))
             {
-                if (strcasecmp($_SESSION["current_user_role"], "Student") == 0)
-                {
-                    require 'student_user_nav.php';
-                }
-                elseif (strcasecmp($_SESSION["current_user_role"], "Admin") == 0)
-                {
-                    require 'admin_user_nav.php';
-                }
-                else
-                {
-                    // nothing
-                }
+                require 'nav_bar.php';
+                // if (strcasecmp($_SESSION["current_user_role"], "Student") == 0)
+                // {
+                //     require 'student_user_nav.php';
+                // }
+                // elseif (strcasecmp($_SESSION["current_user_role"], "Admin") == 0)
+                // {
+                //     require 'admin_user_nav.php';
+                // }
+                // else
+                // {
+                //     // nothing
+                // }
 
                 // $_SESSION["message_testing"] = "message working";
             }

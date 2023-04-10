@@ -182,9 +182,14 @@
     //          VALUE ('John', 'Will', 'student', '1', 'john@knights.ucf.edu', 'john')";
     // $status = mysqli_query($connect, $sql);
 
+    
     // $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
     //          VALUE ('Josh', 'someone', 'admin', '1', 'josh@knights.ucf.edu', 'josh')";
     // $status = mysqli_query($connect, $sql);
+    
+    $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+             VALUE ('rando', 'Will', 'Super Admin', '1', 'rando@knights.ucf.edu', 'rando')";
+    $status = mysqli_query($connect, $sql);
 
     // // will be using this
     // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type)
