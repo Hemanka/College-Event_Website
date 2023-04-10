@@ -53,7 +53,7 @@
         <h1>Public event Information</h1>
 
         <?php while ($info = mysqli_fetch_array($result)) {?>
-            <a href="event_info?<?php echo $info['event_id']?>">
+            <a href="event_info.php?<?php echo $info['event_id']?>">
                 <div class="events_info">
                     <h2><?php echo $info['event_name']?></h2>
                     <p>--the date and time would be displayed here--</p>

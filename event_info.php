@@ -3,6 +3,8 @@
     - displaying of map
     - displaying the date and time of the event
     - going back to the previous page
+
+    - need to provide this page: the event_id
  -->
 
 <?php
@@ -21,11 +23,11 @@
     }
 
     // store the event_id
-    // echo $_SERVER['QUERY_STRING'];
     $current_event_info = $_SERVER['QUERY_STRING'];
 
     $sql = "SELECT * FROM Events WHERE event_id='$current_event_info'";
     $result = mysqli_query($connect, $sql);
+    $info = mysqli_fetch_array($result);
 
     if (isset($_SESSION['edit_comment']))
     {
@@ -68,7 +70,7 @@
     </head>
 
     <body>
-        <?php while ($info = mysqli_fetch_array($result)) {?>
+        <!-- <?php //while ($info = mysqli_fetch_array($result)) {?> -->
             <!-- basic information of the current event -->
             <h1><?php echo $info['event_name']?></h1>
             <p>--the date and time would be displayed here--</p>
@@ -80,11 +82,13 @@
             <h3>Comments:</h3>
 
             <!-- the user can add comments to the current event -->
-            <form action="addComment.php" method="post">
-                <!-- <label for="comment">Add Comments about this event</label> -->
-                <textarea rows="4" cols="75" id="comment" name="comment"></textarea>
-                <button class="comment_button" type="submit" name="add_comment" value="<?php echo $info['event_id']?>">Add Comment</button>
-            </form>
+            <?php if (!isset($_SESSION['edit_comment'])) {?>
+                <form action="addComment.php" method="post">
+                    <!-- <label for="comment">Add Comments about this event</label> -->
+                    <textarea rows="4" cols="75" id="comment" name="comment"></textarea>
+                    <button class="comment_button" type="submit" name="add_comment" value="<?php echo $info['event_id']?>">Add Comment</button>
+                </form>
+            <?php }?>
 
             <!-- show comments that have been already made to this event -->
             <?php
@@ -125,10 +129,18 @@
                     </form>
                 </div>
             <?php }?>
-        <?php }?>
+        <!-- <?php //}?> -->
         
 
         <!-- need to be done: return back to the page where the user was previously -->
+        <!-- NEED TO CHANGE THE DISPLAY OF THE LINK TO LOOK MORE LIKE A BUTTON -->
+        <?php if (strcasecmp($info['event_type'], "Public") == 0) {?>
+            <a href="public_event.php"> Go Back</a>
+        <?php } else if (strcasecmp($info['event_type'], "Private") == 0) {?>
+            <a href="private_event.php"> Go Back</a>
+        <?php } else if (strcasecmp($info['event_type'], "Rso") == 0) {?>
+            <a href="rso_event.php"> Go Back</a>
+        <?php } else { /* this should never run*/ }?>
         <!-- <a href=""></a> -->
     </body>
 
