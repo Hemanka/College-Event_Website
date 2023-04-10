@@ -43,7 +43,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Public Events</title>
+        <!-- name of the event can be shown here -->
+        <title>Event Info</title>
 
         <meta name="viewpoint" content="width=device-width">
         <?php 

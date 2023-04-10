@@ -62,7 +62,7 @@
                                                     user_id INTEGER,
                                                     PRIMARY KEY(member_id),
                                                     FOREIGN KEY(rso_id) REFERENCES Rso(rso_id),
-                                                    FOREIGN KEY(user_id) REFERENCES University(uni_id)
+                                                    FOREIGN KEY(user_id) REFERENCES Users(user_id)
 
     )";
     $status = mysqli_query($connect, $sql);
@@ -90,9 +90,11 @@
                                                 -- latitude INTEGER NOT NULL,
                                                 -- longitude INTEGER NOT NULL,
                                                 event_type CHAR(10) NOT NULL,
+                                                uni_id INTEGER,
                                                 rso_id INTEGER,
                                                 PRIMARY KEY(event_id),
-                                                FOREIGN KEY(rso_id) REFERENCES Rso(rso_id)
+                                                FOREIGN KEY(rso_id) REFERENCES Rso(rso_id),
+                                                FOREIGN KEY(uni_id) REFERENCES University(uni_id)
                                                 -- FOREIGN KEY(loc_id) REFERENCES Event_location(loc_id)
 
     )";
@@ -187,17 +189,31 @@
     //          VALUE ('Josh', 'someone', 'admin', '1', 'josh@knights.ucf.edu', 'josh')";
     // $status = mysqli_query($connect, $sql);
     
-    $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
-             VALUE ('rando', 'Will', 'Super Admin', '1', 'rando@knights.ucf.edu', 'rando')";
-    $status = mysqli_query($connect, $sql);
+    // $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+    //          VALUE ('rando', 'Will', 'Super Admin', '1', 'rando@knights.ucf.edu', 'rando')";
+    // $status = mysqli_query($connect, $sql);
 
-    // // will be using this
+    // $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+    //           VALUE ('Sam', 'Will', 'Student', '2', 'sam@uf.edu', 'sam')";
+    // $status = mysqli_query($connect, $sql);
+
+    // // // will be using this
     // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type)
     //         VALUE ('Hackaton', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', 'Public')";
     // $status = mysqli_query($connect, $sql);
 
     // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type)
     //         VALUE ('Hackaton 2', 'You can build your another new projects', '1112223333', 'josh@knights.ucf.edu', 'Public')";
+    // $status = mysqli_query($connect, $sql);
+
+    // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type, uni_id)
+    //         VALUE ('Resume Building', 'It is never to early to build your resume. Learn the important things to include in your resume',
+    //             '4412223333', 'rando@knights.ucf.edu', 'Private', '1')";
+    // $status = mysqli_query($connect, $sql);
+
+    // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type, uni_id)
+    //         VALUE ('Advisor meeting', 'Plan you future semester',
+    //             '4412228333', 'sam@uf.edu', 'Private', '2')";
     // $status = mysqli_query($connect, $sql);
 
     //------------------------------------------------------------------------------------------------------
