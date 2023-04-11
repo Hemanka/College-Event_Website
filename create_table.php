@@ -111,7 +111,7 @@
     )";
     $status = mysqli_query($connect, $sql);
 
-    // uni_id = 1
+//     // uni_id = 1
 //     $sql = "INSERT INTO University(uni_name, uni_address, uni_description) 
 //             VALUE ('University of Central Florida', '4000 Central Florida Blvd, Orlando, Fl, 32816', 
 //                     'Home of Knights')";
@@ -122,17 +122,17 @@
 //             VALUE ('University of Florida', 'Gainesville, Fl, 32611', 'Home of Gators')";
 //     $status = mysqli_query($connect, $sql);
 
-//     // user_id = 1 -- student
+// //     // user_id = 1 -- student
 //     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
 //              VALUE ('John', 'Will', 'Student', '1', 'john@knights.ucf.edu', 'john')";
 //     $status = mysqli_query($connect, $sql);
 
-//     // user_id = 2
+// //     // user_id = 2
 //     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
 //              VALUE ('Josh', 'someone', 'Admin', '1', 'josh@knights.ucf.edu', 'josh')";
 //     $status = mysqli_query($connect, $sql);
 
-//     // user_id = 3
+// //     // user_id = 3
 //     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
 //              VALUE ('Olivia', 'Brown', 'Admin', '1', 'olivia@knights.ucf.edu', 'olivia')";
 //     $status = mysqli_query($connect, $sql);
@@ -172,7 +172,7 @@
 //              VALUE ('Adam', 'Will', 'Student', '1', 'adam@uf.edu', 'adam')";
 //     $status = mysqli_query($connect, $sql);
 
-    // rso_id = 1
+//     // rso_id = 1
 //     $sql = "INSERT INTO Rso(rso_name, rso_status, admin_id, uni_id) 
 //             VALUE ('Robotics Club', 'Active', '2', '1')";
 //     $status = mysqli_query($connect, $sql);
@@ -181,7 +181,7 @@
 //             VALUE ('1', '2')";
 //     $status = mysqli_query($connect, $sql);
 
-    // rso_id = 2
+//     // rso_id = 2
 //     $sql = "INSERT INTO Rso(rso_name, rso_status, admin_id, uni_id) 
 //             VALUE ('Community Servies Club', 'Active', '3', '1')";
 //     $status = mysqli_query($connect, $sql);
@@ -190,7 +190,7 @@
 //             VALUE ('2', '3')";
 //     $status = mysqli_query($connect, $sql);
 
-    // rso_id = 3
+//     // rso_id = 3
 //     $sql = "INSERT INTO Rso(rso_name, rso_status, admin_id, uni_id) 
 //             VALUE ('Outdoors Club', 'Active', '8', '1')";
 //     $status = mysqli_query($connect, $sql);
@@ -199,7 +199,7 @@
 //             VALUE ('3', '8')";
 //     $status = mysqli_query($connect, $sql);
 
-    // rso_id = 4
+//     // rso_id = 4
 //     $sql = "INSERT INTO Rso(rso_name, rso_status, admin_id, uni_id) 
 //             VALUE ('Debate Club', 'Active', '6', '2')";
 //     $status = mysqli_query($connect, $sql);
@@ -208,7 +208,7 @@
 //             VALUE ('4', '6')";
 //     $status = mysqli_query($connect, $sql);
 
-    // rso_id = 5
+//     // rso_id = 5
 //     $sql = "INSERT INTO Rso(rso_name, rso_status, admin_id, uni_id) 
 //             VALUE ('Video Games Club', 'Active', '9', '2')";
 //     $status = mysqli_query($connect, $sql);
