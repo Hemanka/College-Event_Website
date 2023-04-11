@@ -73,7 +73,9 @@
                     <p>--the date and time would be displayed here--</p>
                     <p>University: 
                         <?php 
-                            $get_uniname_sql = "SELECT * FROM University Un, Events E  WHERE Un.uni_id = E.uni_id";
+                            $event_uni_id = $private_event_info['uni_id'];
+
+                            $get_uniname_sql = "SELECT * FROM University Un WHERE Un.uni_id = '$event_uni_id'";
                             $get_uniname_result = mysqli_query($connect, $get_uniname_sql);
                             $get_uniname_info = mysqli_fetch_array($get_uniname_result);
 

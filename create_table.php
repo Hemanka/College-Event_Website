@@ -111,9 +111,153 @@
     )";
     $status = mysqli_query($connect, $sql);
 
+    // uni_id = 1
+//     $sql = "INSERT INTO University(uni_name, uni_address, uni_description) 
+//             VALUE ('University of Central Florida', '4000 Central Florida Blvd, Orlando, Fl, 32816', 
+//                     'Home of Knights')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // uni_id = 2
+//     $sql = "INSERT INTO University(uni_name, uni_address, uni_description) 
+//             VALUE ('University of Florida', 'Gainesville, Fl, 32611', 'Home of Gators')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // user_id = 1 -- student
+//     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+//              VALUE ('John', 'Will', 'Student', '1', 'john@knights.ucf.edu', 'john')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // user_id = 2
+//     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+//              VALUE ('Josh', 'someone', 'Admin', '1', 'josh@knights.ucf.edu', 'josh')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // user_id = 3
+//     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+//              VALUE ('Olivia', 'Brown', 'Admin', '1', 'olivia@knights.ucf.edu', 'olivia')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // user_id = 4 -- student
+//     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+//              VALUE ('Ethan', 'Jones', 'Student', '2', 'ethan@uf.edu', 'ethan')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // user_id = 5 -- student
+//     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+//              VALUE ('Sana', 'Patel', 'Student', '2', 'sana@uf.edu', 'sana')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // user_id = 6
+//     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+//              VALUE ('Jia', 'Ling', 'Admin', '2', 'jia@uf.edu', 'jia')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // user_id = 7 -- super admin
+//     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+//              VALUE ('Junho', 'Park', 'Super Admin', '1', 'junho@knights.uf.edu', 'junho')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // user_id = 8
+//     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+//              VALUE ('Priya', 'Singh', 'Admin', '1', 'priya@knights.uf.edu', 'priya')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // user_id = 9
+//     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+//              VALUE ('Sean', 'Lee', 'Admin', '2', 'sean@uf.edu', 'sean')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // user_id = 10 -- student
+//     $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+//              VALUE ('Adam', 'Will', 'Student', '1', 'adam@uf.edu', 'adam')";
+//     $status = mysqli_query($connect, $sql);
+
+    // rso_id = 1
+//     $sql = "INSERT INTO Rso(rso_name, rso_status, admin_id, uni_id) 
+//             VALUE ('Robotics Club', 'Active', '2', '1')";
+//     $status = mysqli_query($connect, $sql);
+
+//     $sql = "INSERT INTO Member_rso(rso_id, user_id) 
+//             VALUE ('1', '2')";
+//     $status = mysqli_query($connect, $sql);
+
+    // rso_id = 2
+//     $sql = "INSERT INTO Rso(rso_name, rso_status, admin_id, uni_id) 
+//             VALUE ('Community Servies Club', 'Active', '3', '1')";
+//     $status = mysqli_query($connect, $sql);
+
+//     $sql = "INSERT INTO Member_rso(rso_id, user_id) 
+//             VALUE ('2', '3')";
+//     $status = mysqli_query($connect, $sql);
+
+    // rso_id = 3
+//     $sql = "INSERT INTO Rso(rso_name, rso_status, admin_id, uni_id) 
+//             VALUE ('Outdoors Club', 'Active', '8', '1')";
+//     $status = mysqli_query($connect, $sql);
+
+//     $sql = "INSERT INTO Member_rso(rso_id, user_id) 
+//             VALUE ('3', '8')";
+//     $status = mysqli_query($connect, $sql);
+
+    // rso_id = 4
+//     $sql = "INSERT INTO Rso(rso_name, rso_status, admin_id, uni_id) 
+//             VALUE ('Debate Club', 'Active', '6', '2')";
+//     $status = mysqli_query($connect, $sql);
+
+//     $sql = "INSERT INTO Member_rso(rso_id, user_id) 
+//             VALUE ('4', '6')";
+//     $status = mysqli_query($connect, $sql);
+
+    // rso_id = 5
+//     $sql = "INSERT INTO Rso(rso_name, rso_status, admin_id, uni_id) 
+//             VALUE ('Video Games Club', 'Active', '9', '2')";
+//     $status = mysqli_query($connect, $sql);
+
+//     $sql = "INSERT INTO Member_rso(rso_id, user_id) 
+//             VALUE ('5', '9')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // event_id = 1 - Public
+//     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type)
+//             VALUE ('Hackaton', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', 'Public')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // event_id = 2 - Public
+//     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type)
+//             VALUE ('Hackaton 2', 'You can build your another new projects', '1112223333', 'josh@knights.ucf.edu', 'Public')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // event_id = 3 - Private: UCF
+//     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type, uni_id)
+//             VALUE ('Resume Building', 'It is never to early to build your resume. Learn the important things to include in your resume',
+//                 '4412223333', 'olivia@knights.ucf.edu', 'Private', '1')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // event_id = 4 - Private: UF
+//     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type, uni_id)
+//             VALUE ('Advisor meeting', 'Plan you future semester',
+//                 '4412228333', 'jia@uf.edu', 'Private', '2')";
+//     $status = mysqli_query($connect, $sql);
+
+//     // event_id = 5 - Rso: 1
+//     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type, rso_id)
+//                 VALUE ('General Body meeting', 'Discuss this month active',
+//                 '4412228343', 'josh@knights.ucf.edu', 'Rso', '1')";
+//     $status = mysqli_query($connect, $sql);
 
 
-    // $sql = "CREATE TABLE IF NOT EXISTS Public_events(   public_event_id INTEGER AUTO_INCREMENT,
+//     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type, rso_id)
+//             VALUE ('General Body meeting', 'Discuss this month\'s active', '2228880011', 'josh@knights.ucf.edu', 'Private', '1')";
+//     $status = mysqli_query($connect, $sql);
+
+
+
+
+
+
+        //--------------------need to delete this later------------------
+
+        // $sql = "CREATE TABLE IF NOT EXISTS Public_events(   public_event_id INTEGER AUTO_INCREMENT,
     //                                                     event_id INTEGER NOT NULL,
     //                                                     PRIMARY KEY(public_event_id),
     //                                                     FOREIGN KEY(event_id) REFERENCES Events(event_id)
@@ -170,24 +314,6 @@
     // $status = mysqli_query($connect, $sql);
 
     // create a new table for each event type -- maybe, if needed
-
-    // $sql = "INSERT INTO University(uni_name, uni_address, uni_description) 
-    //         VALUE ('University of Central Florida', '4000 Central Florida Blvd, Orlando, Fl, 32816', 
-    //                 'Home of Knights')";
-    // $status = mysqli_query($connect, $sql);
-
-    // $sql = "INSERT INTO University(uni_name, uni_address, uni_description) 
-    //         VALUE ('University of Florida', 'Gainesville, Fl, 32611', 'Home of Gators')";
-    // $status = mysqli_query($connect, $sql);
-
-    // $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
-    //          VALUE ('John', 'Will', 'student', '1', 'john@knights.ucf.edu', 'john')";
-    // $status = mysqli_query($connect, $sql);
-
-    
-    // $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
-    //          VALUE ('Josh', 'someone', 'admin', '1', 'josh@knights.ucf.edu', 'josh')";
-    // $status = mysqli_query($connect, $sql);
     
     // $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
     //          VALUE ('rando', 'Will', 'Super Admin', '1', 'rando@knights.ucf.edu', 'rando')";
@@ -196,6 +322,10 @@
     // $sql = "INSERT INTO Users(user_fname, user_lname, user_role, uni_id, user_email, user_password) 
     //           VALUE ('Sam', 'Will', 'Student', '2', 'sam@uf.edu', 'sam')";
     // $status = mysqli_query($connect, $sql);
+
+    
+
+
 
     // // // will be using this
     // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type)
