@@ -31,10 +31,11 @@
                 <a class="nav_text" href = "public_event.php">Public Events</a>
                 <a class="nav_text" href = "private_event.php">Private Events</a>
                 <a class="nav_text" href = "rso_event.php">RSO Events</a>
+                <a class="nav_text" href = "create_rso_page.php">Create New RSO</a>
 
                 <?php if ((strcasecmp($_SESSION["current_user_role"], "Admin") == 0) ||
                             (strcasecmp($_SESSION["current_user_role"], "Super Admin") == 0)) {?>
-                    <a class="nav_text" href = "create_rso_page.php">Create New RSO</a>
+                    <a class="nav_text" href = "create_event_page.php">Create New Event</a>
                 <?php }?>
 
                 <?php if (strcasecmp($_SESSION["current_user_role"], "Super Admin") == 0) {?>

@@ -1,3 +1,15 @@
+<!-- 
+    CHECK to see if the query runs fine for getting the list of rso
+    
+    NEED TO DO:
+    - get info about rso event
+    - get infor about private event
+
+    AFTER THIS:
+    - start working on a create_event file, where the input from this page would be used
+
+ -->
+
 <?php
     session_start();
 
@@ -12,11 +24,15 @@
         die("Connection failed");
     }
 
-    // $sql = "SELECT * FROM Events WHERE event_type = 'Public'";
-    // $result = mysqli_query($connect, $sql);
-    // $numRows = mysqli_num_rows($result);
-    //need to remove this
-    // echo $numRows;
+    // NEED TO CHECK THIS QUERY
+    if (isset($_SESSION["current_user_id"]))
+    {
+        $user_id_display = $_SESSION["current_user_id"];
+
+        $rso_list_sql = "SELECT * FROM Rso R1 
+                        WHERE R1.rso_id IN (SELECT M1.rso_id FROM Member_rso M1 WHERE M1.user_id = '$user_id_display')";
+        $rso_list_result = mysqli_query($connect, $rso_list_sql);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +49,8 @@
                 require 'nav_bar.php';
             }
         ?>
+
+        <script src="new_event.js"></script>
 
     </head>
 
@@ -57,10 +75,51 @@
                 
                 <br><br>
 
-                <label for="start_time">Start Time: </label>
-                <input type="text" id="start_time" name="start_time">
+                <label for="new_event_type">Event Type: </label>
+				<select onchange="eventType(this)" id="new_event_type" name="new_event_type">
+                    <option value="default">Choose An Event Type</option>
+					<option value="public">Public Event</option>
+					<option value="private">Private Event</option>
+					<option value="rso">RSO Event</option>
+				</select>
                 
                 <br><br>
+
+                <!-- <div id="chose_public_event" style="display: none;">
+                    <p>public_event</p>
+                </div> -->
+
+                <div id="chose_private_event" style="display: none;">
+                    <!-- <p>private_event</p> -->
+                    
+                </div>
+
+                <div id="chose_rso_event" style="display: none;">
+                    <!-- <p>rso_event</p> -->
+                    <label for="new_event_type">Event Type: </label>
+                    <select id="rso" name="rso">
+                        <option value="default">Choose An Rso</option>
+                        <option value="public">Public Event</option>
+                    </select>
+                </div>
+
+                <!-- depending on the event type ask for related input -->
+
+
+
+                <label for="start_time">Start Time: </label>
+                <input type="datetime-local" id="start_time" name="start_time">
+                
+                <br><br>
+
+                <label for="end_time">End Time: </label>
+                <input type="datetime-local" id="end_time" name="end_time">
+                
+                <br><br>
+
+                <!-- get the location for the event -->
+
+
 
                 <button type="submit">Log in</button>
             </div>
@@ -68,6 +127,7 @@
         <!-- </div> -->
         <!-- </div> -->
 
+        
         
 
     </body>
