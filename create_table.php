@@ -71,7 +71,6 @@
     //                                                     latitude INTEGER NOT NULL,
     //                                                     longitude INTEGER NOT NULL,
     //                                                     PRIMARY KEY(loc_id)
-
     // )";
     // $status = mysqli_query($connect, $sql);
 
@@ -80,19 +79,26 @@
     // need to know the formate in which the location of the event would be stored
     $sql = "CREATE TABLE IF NOT EXISTS Events(  event_id INTEGER AUTO_INCREMENT,
                                                 event_name CHAR(100) NOT NULL,
+                                                event_cat CHAR(100) NOT NULL,
                                                 event_description CHAR(100) NOT NULL,
                                                 contact_number CHAR(10) NOT NULL,
                                                 contact_email CHAR(100) NOT NULL,
                                                 -- event_date DATE NOT NULL,
                                                 -- start_time TIME NOT NULL,
                                                 -- end_time TIME NOT NULL,
-                                                -- loc_id INTEGER,
-                                                -- latitude INTEGER NOT NULL,
-                                                -- longitude INTEGER NOT NULL,
+                                                start_time DATETIME NOT NULL,
+                                                end_time DATETIME NOT NULL,
+                                                -- start_time TIMESTAMP NOT NULL,
+                                                -- end_time TIMESTAMP NOT NULL,
+                                                -- long_lat POINT NOT NULL,
+                                                -- loc_id INTEGER NOT NULL,
+                                                latitude DECIMAL(10, 8) NOT NULL,
+                                                longitude DECIMAL(10, 8) NOT NULL,
                                                 event_type CHAR(10) NOT NULL,
                                                 uni_id INTEGER,
                                                 rso_id INTEGER,
                                                 PRIMARY KEY(event_id),
+                                                -- SPATIAL INDEX (long_lat),
                                                 FOREIGN KEY(rso_id) REFERENCES Rso(rso_id),
                                                 FOREIGN KEY(uni_id) REFERENCES University(uni_id)
                                                 -- FOREIGN KEY(loc_id) REFERENCES Event_location(loc_id)
@@ -217,10 +223,21 @@
 //             VALUE ('5', '9')";
 //     $status = mysqli_query($connect, $sql);
 
-//     // event_id = 1 - Public
-//     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type)
-//             VALUE ('Hackaton', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', 'Public')";
-//     $status = mysqli_query($connect, $sql);
+    // event_id = 1 - Public
+    // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, start_time, end_time, long_lat, event_type)
+    //         VALUE ('Hackaton', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', '2023-04-24 09:00:00', '2023-04-24 10:00:00' , POINT(28.601720028286387, -81.20040256091856), 'Public')";
+    // $status = mysqli_query($connect, $sql);
+
+    // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, start_time, end_time, long_lat, event_type)
+    //         VALUE ('Hackaton', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', '2023-04-24 09:00:00', '2023-04-24 10:00:00' , POINT(28.601720028286387, -81.20040256091856), 'Public')";
+    // $status = mysqli_query($connect, $sql);
+
+    // -----USING this format---
+    // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, start_time, end_time, latitude, longitude, event_type)
+    //         VALUE ('Hackaton', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', '2023-04-24 09:00:00', '2023-04-24 10:00:00' , '28.601720028286387', '-81.20040256091856', 'Public')";
+    // $status = mysqli_query($connect, $sql);
+        // 28.601720028286387, -81.20040256091856
+        // 28.60161641, -81.20045620
 
 //     // event_id = 2 - Public
 //     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type)

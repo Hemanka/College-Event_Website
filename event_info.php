@@ -76,11 +76,42 @@
             <!-- basic information of the current event -->
             <h1><?php echo $info['event_name']?></h1>
             <p>--the date and time would be displayed here--</p>
+            <!-- date and time of the event is displayed here -->
+            <?php
+                $get_date_sql = "SELECT E1.start_time AS e_start_date, E1.end_time AS e_end_date
+                                    FROM Events E1 WHERE E1.event_id='$current_event_info'";
+                $get_date_result = mysqli_query($connect, $get_date_sql);
+                $get_date_info = mysqli_fetch_array($get_date_result);
+
+                $start_time_info = new DateTime($get_date_info['e_start_date']);
+                $end_time_info = new DateTime($get_date_info['e_end_date']);
+
+                if (strcasecmp($start_time_info->format("y:m:d"), $end_time_info->format("y:m:d")) == 0) {
+            ?>
+                <p>Date: <?php echo $start_time_info->format("d/m/Y");?></p>
+                <p>Time: <?php echo $start_time_info->format("h:i A");?> - <?php echo $end_time_info->format("h:i A");?></p>
+            <?php } else { ?>
+                <p>Start Date: <?php echo $start_time_info->format("d/m/Y");?> - End Date <?php echo $end_time_info->format("d/m/Y");?></p>
+                <p>Time: <?php echo $start_time_info->format("h:i A");?> - <?php echo $end_time_info->format("h:i A");?></p>
+            <?php }?>
+            
+            <!-- description of the event is displayed -->
             <p><?php echo $info['event_description']?></p>
 
-            
-
             <p>--map will be displayed here--</p>
+
+            <!-- code to get the long and lat -->
+            <?php
+                $temp_get_sql = "SELECT * FROM Events WHERE event_id='1'";
+                $temp_get_result = mysqli_query($connect, $temp_get_sql);
+
+                $temp_get_info = mysqli_fetch_array($temp_get_result);
+
+                echo $temp_get_info['latitude'];
+                echo "<br>";
+                echo $temp_get_info['longitude'];
+                
+            ?>
             <h3>Comments:</h3>
 
             <!-- the user can add comments to the current event -->

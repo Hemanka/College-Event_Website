@@ -54,7 +54,7 @@
 
     </head>
 
-    <body>
+    <body>            
         <form action="create_event.php" method="post">
             <h1>Create New Events</h1>
 
