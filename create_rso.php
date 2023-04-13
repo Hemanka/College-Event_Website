@@ -1,151 +1,172 @@
 <!-- check for necessary conditions for creating an RSO -->
+<!-- 
+	TO-DO:
+	- check if the success message would be displayed on the public event page
+ -->
 <?php
+	session_start();
 	// input taken from the user
 	$new_rso_name = $_POST["new_rso_name"];
+	$admin_user_email = $_POST["admin_user_email"];
 	$first_user_email = $_POST["first_user_email"];
 	$second_user_email = $_POST["second_user_email"];
 	$third_user_email = $_POST["third_user_email"];
 	$fourth_user_email = $_POST["fourth_user_email"];
+	
+
+	$valid_emails = TRUE;
 
 	$db_servername = "localhost";
     $db_username = "root";
     $db_password = "password";
     $db_name = "college_event_db";
-	
-	function test_input($data)
-	{
-		$data = trim($data);
-		$data = stripslashes($data);
-		$data = htmlspecialchars($data);
-		return $data;
-	}
 
-	// sees if email entered is a valid one
-	function validateEmail($email)
-	{
-		$email = test_input($email);
-
-		if (empty($email))
-		{
-			echo "Email is required";
-			header("location:create_rso_page.php");
-		}
-		else if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-		{
-			echo "Invalid email format";
-			header("location:create_rso_page.php");
-		}
-	}
-
-    $connect = new mysqli($db_servername, $db_username, $db_password, $db_name);
+	$connect = new mysqli($db_servername, $db_username, $db_password, $db_name);
     if ($connect->connect_error)
     {
         die("Connection failed");
     }
 
-	// check for empty rso entry
-	if (empty($new_rso_name))
-	{
-		echo "Must enter RSO name";
-	}
-
-	// check for duplicate RSO:
-	// could make string all uppercase with strtoupper(str)
-	$sql = "SELECT * FROM rso WHERE rso_name = '$new_rso_name'";
-	$rso_result = mysqli_query($connect, $sql);
-	$rso_info = mysqli_fetch_array($rso_result);
-
-	if (mysqli_num_rows($rso_result) > 0)
-	{
-		echo "RSO already exists!";
-		header("location:create_rso_page.php");
-	}
-
-	// check for valid emails
-	validateEmail($first_user_email);
-	validateEmail($second_user_email);
-	validateEmail($third_user_email);
-	validateEmail($fourth_user_email);
-
-	// check for non-existant users:
-	// get all of the current user emails
-	$sql = "SELECT user_email FROM users";
+	// the following codes check to see if email address provided are valid or not
+	// and if the members are from the same uni
+	$sql = "SELECT * FROM Users WHERE user_email = '$admin_user_email'";
 	$result = mysqli_query($connect, $sql);
-	$userEmailArray = mysqli_fetch_row($result);
-
-	while ($email = mysqli_fetch_column($result, 1))
+    $numRows = mysqli_num_rows($result);
+	if ($numRows < 1)
 	{
-		array_push($userEmailArray, $email);
+		$valid_emails = FALSE;
+	}
+	else
+	{
+		$info = mysqli_fetch_array($result);
+		$rso_uni_id = $info['uni_id'];
+		$this_rso_admin_id = $info['user_id'];
 	}
 
-	$UEALength = count($userEmailArray);
-
-	$uniIds = array();
-	$userIds = array();
-
-	for ($i = 0; $i < $UEALength; $i++)
+	$sql = "SELECT * FROM Users WHERE user_email = '$first_user_email'";
+	$result = mysqli_query($connect, $sql);
+    $numRows = mysqli_num_rows($result);
+	if ($numRows < 1)
 	{
-		// find current email in the user_email array
-		$initial_query = "SELECT * FROM users WHERE user_email = '$info[$i]'";
+		$valid_emails = FALSE;
+	}
+	else
+	{
+		$info = mysqli_fetch_array($result);
+		$first_user_id = $info['user_id'];
+		if ($rso_uni_id != $info['uni_id'])
+		{
+			$valid_emails = FALSE;
+		}
+	}
+
+	$sql = "SELECT * FROM Users WHERE user_email = '$second_user_email'";
+	$result = mysqli_query($connect, $sql);
+    $numRows = mysqli_num_rows($result);
+	if ($numRows < 1)
+	{
+		$valid_emails = FALSE;
+	}
+	else
+	{
+		$info = mysqli_fetch_array($result);
+		$second_user_id = $info['user_id'];
+		if ($rso_uni_id != $info['uni_id'])
+		{
+			$valid_emails = FALSE;
+		}
 		
-		$result = mysqli_query($connect, $initial_query);
-
-		// if the current email does not exist, display error msg and redirect to create_rso_page
-		if (mysqli_num_rows($result) == 0)
-		{
-			echo "One or more emails entered do not exist!";
-			header("location:create_rso_page.php");
-		}
-
-		// get uni_id and user_ids
-		$emailArray = mysqli_fetch_array($result);
-
-		array_push($uniIds, $emailArray["uni_id"]);
-		array_push($userIds, $emailArray["user_id"]);
-
-		// checks if each user entered go to the same university by comparing uni_ids
-		if (!empty($uniIds) && $info[$i+1] != null)
-		{
-			if ($uniIds[$i] != $uniIds[$i+1])
-			{
-				echo "One or more emails are from different Universities!";
-				header("location:create_rso_page.php");
-			}
-		}
 	}
 
-	// insert rso:
-	$uni = $uniIds[0];
-	$status = "active";
-	$insert_query = "INSERT INTO rso (rso_name, rso_status, uni_id) 
-					 VALUES ('$new_rso_name', '$status', $uni)";
-
-	$result = mysqli_query($connect, $insert_query);
-
-	if (!$result)
+	$sql = "SELECT * FROM Users WHERE user_email = '$third_user_email'";
+	$result = mysqli_query($connect, $sql);
+    $numRows = mysqli_num_rows($result);
+	if ($numRows < 1)
 	{
-		echo "<b>Unable to create RSO.</b>";
-		header("location:create_rso_page.php");
+		$valid_emails = FALSE;
 	}
-
-	// insert members using the newly created rso's id:
-	$rsoId = $rso_info["rso_id"];
-
-	$UIlength = count($userIds);
-
-	for ($i = 0; $i < $UIlength; $i++)
+	else
 	{
-		$insert_query = "INSERT INTO member_rso (member_id rso_id user_id) VALUES ('$rsoId', '$userIds[$i]')";
-		$result = mysqli_query($connect, $insert_query);
-
-		if (!$result)
+		$info = mysqli_fetch_array($result);
+		$third_user_id = $info['user_id'];
+		if ($rso_uni_id != $info['uni_id'])
 		{
-			echo "Error adding user";
-			header("location:create_rso_page.php");
+			$valid_emails = FALSE;
 		}
 	}
 
-	echo "<b>RSO successfully created!</b>";
+	$sql = "SELECT * FROM Users WHERE user_email = '$fourth_user_email'";
+	$result = mysqli_query($connect, $sql);
+    $numRows = mysqli_num_rows($result);
+	if ($numRows < 1)
+	{
+		$valid_emails = FALSE;
+	}
+	else
+	{
+		$info = mysqli_fetch_array($result);
+		$fourth_user_id = $info['user_id'];
+		if ($rso_uni_id != $info['uni_id'])
+		{
+			$valid_emails = FALSE;
+		}
+	}
+
+
+	if ($valid_emails == FALSE)
+	{
+		$_SESSION['error_message'] = "Invalid email address provided. Please provide valid email addresses";
+		// echo $_SESSION['error_message'];
+		header("location: create_rso_page.php");
+		die();
+	}
+
+	// check to see if an RSO with the give name already exists at the uni
+	$check_sql = "SELECT * FROM Rso WHERE rso_name = '$new_rso_name'";
+	$check_result = mysqli_query($connect, $check_sql);
+	$check_numRows = mysqli_num_rows($check_result);
+
+	if ($check_numRows != 0)
+	{
+		$_SESSION['error_message'] = "An RSO with the given name '$new_rso_name' already exist at your University";
+		header("location: create_rso_page.php");
+		die();
+	}
+
+	// if the following code excutes, that mean the user can create an RSO
+	$create_rso_sql = "INSERT INTO Rso(rso_name, rso_status, admin_id, uni_id) 
+			             VALUE ('$new_rso_name', 'Active', '$this_rso_admin_id', '$rso_uni_id')";	
+    $status = mysqli_query($connect, $create_rso_sql);
+
+	$get_new_rso_id_sql = "SELECT * FROM Rso WHERE rso_name = '$new_rso_name'";
+	$get_new_rso_id_result = mysqli_query($connect, $get_new_rso_id_sql);
+	$get_new_rso_id_info = mysqli_fetch_array($get_new_rso_id_result);
+	$new_rso_id = $get_new_rso_id_info['rso_id'];
+
+	// the five give users are registed as the member of the newly created RSO
+	$sql = "INSERT INTO Member_rso(rso_id, user_id) 
+            VALUE ('$new_rso_id', '$this_rso_admin_id')";
+    $status = mysqli_query($connect, $sql);
+
+	$sql = "INSERT INTO Member_rso(rso_id, user_id) 
+            VALUE ('$new_rso_id', '$first_user_id')";
+    $status = mysqli_query($connect, $sql);
+
+	$sql = "INSERT INTO Member_rso(rso_id, user_id) 
+            VALUE ('$new_rso_id', '$second_user_id')";
+    $status = mysqli_query($connect, $sql);
+
+	$sql = "INSERT INTO Member_rso(rso_id, user_id) 
+            VALUE ('$new_rso_id', '$third_user_id')";
+    $status = mysqli_query($connect, $sql);
+
+	$sql = "INSERT INTO Member_rso(rso_id, user_id) 
+            VALUE ('$new_rso_id', '$fourth_user_id')";
+    $status = mysqli_query($connect, $sql);
 
 	$connect->close();
+
+	// STILL NEED TO CHECK IF THIS WORKS
+	$_SESSION['success_message'] = "RSO Created Successfully";
+	header("location: public_page.php");
 ?>

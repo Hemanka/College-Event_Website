@@ -223,44 +223,51 @@
 //             VALUE ('5', '9')";
 //     $status = mysqli_query($connect, $sql);
 
-    // event_id = 1 - Public
-    // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, start_time, end_time, long_lat, event_type)
-    //         VALUE ('Hackaton', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', '2023-04-24 09:00:00', '2023-04-24 10:00:00' , POINT(28.601720028286387, -81.20040256091856), 'Public')";
-    // $status = mysqli_query($connect, $sql);
+// $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, start_time, end_time, long_lat, event_type)
+//         VALUE ('Hackaton', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', '2023-04-24 09:00:00', '2023-04-24 10:00:00' , POINT(28.601720028286387, -81.20040256091856), 'Public')";
+// $status = mysqli_query($connect, $sql);
 
-    // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, start_time, end_time, long_lat, event_type)
-    //         VALUE ('Hackaton', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', '2023-04-24 09:00:00', '2023-04-24 10:00:00' , POINT(28.601720028286387, -81.20040256091856), 'Public')";
-    // $status = mysqli_query($connect, $sql);
+// $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, start_time, end_time, long_lat, event_type)
+//         VALUE ('Hackaton', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', '2023-04-24 09:00:00', '2023-04-24 10:00:00' , POINT(28.601720028286387, -81.20040256091856), 'Public')";
+// $status = mysqli_query($connect, $sql);
 
     // -----USING this format---
-    // $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, start_time, end_time, latitude, longitude, event_type)
-    //         VALUE ('Hackaton', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', '2023-04-24 09:00:00', '2023-04-24 10:00:00' , '28.601720028286387', '-81.20040256091856', 'Public')";
+    // // event_id = 1 - Public
+    // $sql = "INSERT INTO Events(event_name, event_cat, event_description, contact_number, contact_email, 
+    //                             start_time, end_time, latitude, longitude, event_type)
+    //         VALUE ('Hackaton', 'Social', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', 
+    //                 '2023-04-24 09:00:00', '2023-04-24 10:00:00' , '28.601720028286387', '-81.20040256091856', 'Public')";
     // $status = mysqli_query($connect, $sql);
-        // 28.601720028286387, -81.20040256091856
-        // 28.60161641, -81.20045620
+    //     // 28.601720028286387, -81.20040256091856
+    //     // 28.60161641, -81.20045620
 
-//     // event_id = 2 - Public
-//     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type)
-//             VALUE ('Hackaton 2', 'You can build your another new projects', '1112223333', 'josh@knights.ucf.edu', 'Public')";
-//     $status = mysqli_query($connect, $sql);
+    // // event_id = 2 - Public
+    // $sql = "INSERT INTO Events(event_name, event_cat, event_description, contact_number, contact_email, 
+    //                             start_time, end_time, latitude, longitude, event_type)
+    //         VALUE ('Spirit Splash', 'Social', 'Come with your friends to the reflection pond', '1142223333', 
+    //                 'junho@knights.uf.edu', '2023-10-25 10:00:00', '2023-10-25 15:00:00', '28.59976355236447', '-81.20191464742602', 'Public')";
+    // $status = mysqli_query($connect, $sql);
 
-//     // event_id = 3 - Private: UCF
-//     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type, uni_id)
-//             VALUE ('Resume Building', 'It is never to early to build your resume. Learn the important things to include in your resume',
-//                 '4412223333', 'olivia@knights.ucf.edu', 'Private', '1')";
-//     $status = mysqli_query($connect, $sql);
+    // // event_id = 3 - Private: UCF
+    // $sql = "INSERT INTO Events(event_name, event_cat, event_description, contact_number, contact_email, start_time, 
+    //                             end_time, latitude, longitude, event_type, uni_id)
+    //         VALUE ('Resume Building', 'Academic', 'It is never to early to build your resume. Learn the important things to include in your resume',
+    //             '4412223333', 'olivia@knights.ucf.edu', '2023-09-24 12:00:00', '2023-10-25 13:00:00', '28.605358388003314', '-81.19906401976715', 'Private', '1')";
+    // $status = mysqli_query($connect, $sql);
 
-//     // event_id = 4 - Private: UF
-//     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type, uni_id)
-//             VALUE ('Advisor meeting', 'Plan you future semester',
-//                 '4412228333', 'jia@uf.edu', 'Private', '2')";
-//     $status = mysqli_query($connect, $sql);
+    // // event_id = 4 - Private: UF
+    // $sql = "INSERT INTO Events(event_name, event_cat, event_description, contact_number, contact_email, start_time, 
+    //                             end_time, latitude, longitude, event_type, uni_id)
+    //         VALUE ('Advisor meeting', 'Academic', 'Plan you future semester', '4412228333', 'jia@uf.edu', 
+    //                 '2023-05-24 9:00:00', '2023-05-24 11:00:00', '29.643960977521317', '-82.354968193862', 'Private', '2')";
+    // $status = mysqli_query($connect, $sql);
 
-//     // event_id = 5 - Rso: 1
-//     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type, rso_id)
-//                 VALUE ('General Body meeting', 'Discuss this month active',
-//                 '4412228343', 'josh@knights.ucf.edu', 'Rso', '1')";
-//     $status = mysqli_query($connect, $sql);
+    // // event_id = 5 - Rso: 1
+    // $sql = "INSERT INTO Events(event_name, event_cat, event_description, contact_number, contact_email, start_time, 
+    //                             end_time, latitude, longitude, event_type, rso_id)
+    //         VALUE ('General Body meeting', 'Social', 'Discuss this month active', '4412228343', 'josh@knights.ucf.edu', 
+    //                 '2023-05-24 9:00:00', '2023-05-24 11:00:00', '28.60171276074253', '-81.19838586435789', 'Rso', '1')";
+    // $status = mysqli_query($connect, $sql);
 
 
 //     $sql = "INSERT INTO Events(event_name, event_description, contact_number, contact_email, event_type, rso_id)
