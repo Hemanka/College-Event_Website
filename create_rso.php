@@ -112,7 +112,7 @@
 		}
 	}
 
-
+	// display the error message on create rso page
 	if ($valid_emails == FALSE)
 	{
 		$_SESSION['error_message'] = "Invalid email address provided. Please provide valid email addresses";
@@ -126,6 +126,7 @@
 	$check_result = mysqli_query($connect, $check_sql);
 	$check_numRows = mysqli_num_rows($check_result);
 
+	// rso already exist at the member's university
 	if ($check_numRows != 0)
 	{
 		$_SESSION['error_message'] = "An RSO with the given name '$new_rso_name' already exist at your University";
@@ -164,9 +165,13 @@
             VALUE ('$new_rso_id', '$fourth_user_id')";
     $status = mysqli_query($connect, $sql);
 
+	// update the role of the admin of this rso to 'Admin' if they are not already an admin
+	$update_role_sql = "UPDATE Users SET user_role='Admin' WHERE user_id = '$this_rso_admin_id'";
+	$update_role_result = mysqli_query($connect, $update_role_sql); 
+
 	$connect->close();
 
 	// STILL NEED TO CHECK IF THIS WORKS
-	$_SESSION['success_message'] = "RSO Created Successfully";
-	header("location: public_page.php");
+	$_SESSION['rso_created_success_message'] = "RSO Created Successfully";
+	header("location: public_event.php");
 ?>

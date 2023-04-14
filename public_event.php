@@ -1,6 +1,11 @@
 <?php
     session_start();
 
+    if (!isset($_SESSION["current_user_id"]))
+    {
+        header("location: login.php");
+    }
+
     $db_servername = "localhost";
     $db_username = "root";
     $db_password = "password";
@@ -52,6 +57,18 @@
 
     <body>
         <h1>Public event Information</h1>
+
+        <div class="success_message">
+            <?php if (isset($_SESSION['rso_created_success_message'])) { ?>
+                <p><?php echo $_SESSION['rso_created_success_message'];?></p>
+            <?php
+                    unset($_SESSION['rso_created_success_message']);
+                }
+            ?>
+
+            <!-- need to show the message for success in creating a public event -->
+            
+        </div>
 
         <?php while ($info = mysqli_fetch_array($result)) {?>
             <a href="event_info.php?<?php echo $info['event_id']?>">

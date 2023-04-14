@@ -114,6 +114,7 @@
                             <option value="">Choose An Rso</option>
                             <!-- <option value="public">Public Event</option> -->
 
+                            <!-- could set the value to rso_id -->
                             <?php while ($rso_list_info = mysqli_fetch_array($rso_list_result)) {?>
                                         <option value="<?php echo $rso_list_info['rso_name']?>"><?php echo $rso_list_info['rso_name'];?></option>
                             <?php } ?>
@@ -132,8 +133,16 @@
                     get the location for the event 
                     NEED TO TAKE THE INPUT WITH THE HELP OF MAP
                 -->
+                <label for="new_event_type">Choose Location: </label>
+                <select id="event_location" name="event_location" required>
+                    <option value="">Choose An Event Type</option>
+					<option value="su">Student Union</option>
+					<option value="li">Library</option>
+					<option value="meh">Memory Mall</option>
+				</select>
+                <br><br>
                 
-                <label for="latitude">latitude: </label>
+                <!-- <label for="latitude">latitude: </label>
                 <input type="text" id="latitude" name="latitude" required>
                 
                 <br><br>
@@ -141,7 +150,7 @@
                 <label for="longitude">longitude: </label>
                 <input type="text" id="longitude" name="longitude" required>
                 
-                <br><br>
+                <br><br> -->
                 
                 <button type="submit">Create</button>
             </div>
