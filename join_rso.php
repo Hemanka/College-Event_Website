@@ -52,7 +52,18 @@
                      VALUE ('$join_rso_id', '$current_user_id')";
         $status = mysqli_query($connect, $join_rso_sql);
 
-        $_SESSION['join_success_message'] = "RSO Created Successfully";
+        $rso_status_sql = "SELECT * FROM Member_rso M1 WHERE M1.rso_id = '$join_rso_id'";
+        $rso_status_result = mysqli_query($connect, $rso_status_sql);
+        $numRows = mysqli_num_rows($rso_status_result);
+
+        if ($numRows >= 5)
+        {
+            $update_sql = "UPDATE Rso SET rso_status='Active' WHERE rso_id='$join_rso_id'";
+            $status = mysqli_query($connect, $update_sql);
+        }
+        // $status = mysqli_query($connect, $join_rso_sql);
+
+        $_SESSION['join_success_message'] = "Joined RSO Successfully";
         header("location: rso_event.php");
         // echo "SUCCESS<br>";
         // unset($_POST['submit']);
