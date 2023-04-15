@@ -67,13 +67,18 @@
 
                 <br><br>
 
+                <label for="new_event_date">Date: </label>
+                <input type="date" id="new_event_date" name="new_event_date" required>
+                
+                <br><br>
+
                 <label for="start_time">Start Time: </label>
-                <input type="datetime-local" id="start_time" name="start_time" required>
+                <input type="time" id="start_time" name="start_time" required>
                 
                 <br><br>
 
                 <label for="end_time">End Time: </label>
-                <input type="datetime-local" id="end_time" name="end_time" required>
+                <input type="time" id="end_time" name="end_time" required>
                 
                 <br><br>
 
@@ -109,18 +114,18 @@
                 <div id="chose_rso_event" style="display: none;">
                     <?php if ($rso_list_numRows != 0) {?>
                         <!-- <p>rso_event</p> -->
-                        <label for="new_event_type">RSO Name: </label>
-                        <select id="rso" name="rso">
+                        <label for="new_event_rso_id">RSO Name: </label>
+                        <select id="new_event_rso_id" name="new_event_rso_id">
                             <option value="">Choose An Rso</option>
                             <!-- <option value="public">Public Event</option> -->
 
                             <!-- could set the value to rso_id -->
                             <?php while ($rso_list_info = mysqli_fetch_array($rso_list_result)) {?>
-                                        <option value="<?php echo $rso_list_info['rso_name']?>"><?php echo $rso_list_info['rso_name'];?></option>
+                                        <option value="<?php echo $rso_list_info['rso_id']?>"><?php echo $rso_list_info['rso_name'];?></option>
                             <?php } ?>
                         </select>
                     <?php } else {?>
-                        <p>Sorry RSO can't be created.</p>
+                        <p>Sorry RSO Events can not be created.</p>
                     <?php } ?>
 
                     <br><br>
@@ -133,16 +138,21 @@
                     get the location for the event 
                     NEED TO TAKE THE INPUT WITH THE HELP OF MAP
                 -->
-                <label for="new_event_type">Choose Location: </label>
+                <!-- <label for="new_event_type">Choose Location: </label>
                 <select id="event_location" name="event_location" required>
                     <option value="">Choose An Event Type</option>
 					<option value="su">Student Union</option>
 					<option value="li">Library</option>
 					<option value="meh">Memory Mall</option>
 				</select>
+                <br><br> -->
+
+                <label for="loc_name">Location Name: </label>
+                <input type="text" id="loc_name" name="loc_name" required>
+                
                 <br><br>
                 
-                <!-- <label for="latitude">latitude: </label>
+                <label for="latitude">latitude: </label>
                 <input type="text" id="latitude" name="latitude" required>
                 
                 <br><br>
@@ -150,7 +160,7 @@
                 <label for="longitude">longitude: </label>
                 <input type="text" id="longitude" name="longitude" required>
                 
-                <br><br> -->
+                <br><br>
                 
                 <button type="submit">Create</button>
             </div>
