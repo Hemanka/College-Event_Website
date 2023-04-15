@@ -62,9 +62,25 @@
 
             <div class="login_form_text">
 
+            <div class="error_message">
+                
+                <?php if (isset($_SESSION['error_message'])) { ?>
+                    <p><?php echo $_SESSION['error_message'];?></p>
+                <?php
+                        unset($_SESSION['error_message']);
+                    }
+                ?>
+            
+             </div>
+
                 <label for="new_event_name">Event Name: </label>
                 <input type="text" id="new_event_name" name="new_event_name" required>
 
+                <br><br>
+
+                <label for="phone_number">Phone Number: </label>
+                <input type="text" id="phone_number" name="phone_number" required>
+                
                 <br><br>
 
                 <label for="new_event_date">Date: </label>
@@ -101,6 +117,18 @@
 				</select>
                 
                 <br><br>
+
+                <?php if (strcasecmp($_SESSION["current_user_role"], 'Super Admin') == 0) {
+                    $sql = "SELECT * FROM University";
+                    $result = mysqli_query($connect, $sql);
+                ?>
+                    <label for="uni_event">User University: </label>
+                    <select id="uni_event" name="uni_event">
+                        <?php while ($info = mysqli_fetch_array($result)) {?>
+                            <option value="<?php echo $info['uni_name']?>"><?php echo $info['uni_name'];?></option>
+                        <?php }?>
+                    </select>
+                <?php } ?>
 
                 <!-- <div id="chose_public_event" style="display: none;">
                     <p>public_event</p>

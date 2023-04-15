@@ -36,6 +36,7 @@
 	{
 		echo "Email already exists!";
 		header("location:registration_page.php");
+		die();
 	}
 
 		$insert_query = "INSERT INTO Users (user_fname, user_lname, user_role, uni_id,

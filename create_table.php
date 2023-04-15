@@ -123,6 +123,16 @@
     )";
     $status = mysqli_query($connect, $sql);
 
+    $sql = "CREATE TABLE IF NOT EXISTS Approval(    approval_id INTEGER AUTO_INCREMENT,
+                                                    event_id INTEGER NOT NULL,
+                                                    request_user_id INTEGER NOT NULL,
+                                                    PRIMARY KEY(approval_id),
+                                                    FOREIGN KEY(event_id) REFERENCES Events(event_id),
+                                                    FOREIGN KEY(request_user_id) REFERENCES Users(user_id)
+
+    )";
+    $status = mysqli_query($connect, $sql);
+
     // // uni_id = 1
     // $sql = "INSERT INTO University(uni_name, uni_address, uni_description, uni_email_domain) 
     //         VALUE ('University of Central Florida', '4000 Central Florida Blvd, Orlando, Fl, 32816', 
@@ -286,7 +296,7 @@
     //                 '2023-05-24', '9:00:00', '10:00:00', '5', 'Private', '2')";
     // $status = mysqli_query($connect, $sql);
 
-    // // event_id = 4 - Private: UF
+    // // event_id = 4 - Rso:1
     // $sql = "INSERT INTO Events(event_name, event_cat, event_description, contact_number, contact_email, 
     //                             event_date, start_time, end_time, loc_id, event_type, rso_id)
     //         VALUE ('General Body Meeting', 'Social', 'discuss this month active', '1112223333', 'josh@knights.ucf.edu', 
