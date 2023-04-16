@@ -1,3 +1,56 @@
+body {
+    background-color: #FAF1E6;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#usersInfo {
+    background-color: #FDFAF6;
+    color: #064420;
+    border-radius: 25px;
+    padding: 35px;
+}
+
+input {
+    padding:3px;
+    border-color: #064420;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+button {
+    text-align: center;
+    border-radius: 5px;
+    margin:10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    background-color: #E4EFE7;
+
+}
+
+#login_button:hover {
+    color: white;
+    background-color: #064420;
+}
+
+.user_info {
+    /* soemthing */
+    width: 50%;
+    /* align-items: center; */
+    margin-left: 25%;
+    margin-top: 12%;
+    color: #1B262C;
+}
+
+.error_message {
+    color: red;
+}
+
+.login_tag {
+    /* color: #DFA67B; */
+}
+
 nav {
     border-style: hidden;
     background-color: lightgoldenrodyellow;
@@ -62,13 +115,7 @@ a:hover {
     margin: 5%;
 }
 
-#usersInfo {
-    background-color: aqua;
-    margin-top: 3%;
-    margin-left: 15%;
-    margin-right: 15%;
-    padding: 3%;
-}
+
 
 /* button {
     background-color: red;

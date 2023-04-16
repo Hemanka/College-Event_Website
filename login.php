@@ -1,4 +1,7 @@
-<?php require "create_table.php" ?>
+<?php 
+    require "create_table.php";
+    session_start();
+?>
 
 <!DOCTYPE html>
 <html>
@@ -13,29 +16,36 @@
 
     <body>
 
-        <!-- <div class="user_info"> -->
-        <!-- <div> -->
-        <form id="usersInfo" action="sign_in_user.php" method="post">
-            <h1>LOGIN</h1>
+        <div class="user_info">
+            <!-- <div> -->
+            <form id="usersInfo" action="sign_in_user.php" method="post">
+                <h1 class="login_tag">LOGIN</h1>
 
-            <div class="login_form_text">
-                <label for="username">Username: </label>
-                <input type="text" id="username" name="username">
+                <?php if (isset($_SESSION['login_error_message'])) { ?>
+                    <p class="error_message"><?php echo $_SESSION['login_error_message'];?></p>
+                <?php
+                        unset($_SESSION['login_error_message']);
+                    }
+                ?>
 
-                <br>
-                <br>
+                <div class="login_form_text">
+                    <label for="username">Username: </label>
+                    <input type="text" id="username" name="username" required>
 
-                <label for="password">Password: </label>
-                <input type="password" id="password" name="password">
-                
-                <br>
-                <br>
+                    <br>
+                    <br>
 
-                <button type="submit">Log in</button>
-            </div>
-        </form>
+                    <label for="password">Password: </label>
+                    <input type="password" id="password" name="password" required>
+                    
+                    <br>
+                    <br>
+
+                    <button id="login_button" type="submit">Log in</button>
+                </div>
+            </form>
         <!-- </div> -->
-        <!-- </div> -->
+        </div>
 
         
 

@@ -25,23 +25,21 @@
     {
         if (strcmp(($info["user_password"]), $password) == 0)
         {
-            // identity if the user is a student, admin, or super admin
-            // if (user_role == )
-            // $GLOBALS["current_user_id"] = $info["user_id"];
-            // $GLOBALS["current_user_role"] = $info["user_role"];
-            // $GLOBALS["current_user_uni_id"] = $info["uni_id"];
-
+            // the user was successfully able to sign in
             $_SESSION["current_user_id"] = $info["user_id"];
             $_SESSION["current_user_role"] = $info["user_role"];
             header("location: public_event.php");
+            // die();
         }
         else
         {
+            $_SESSION['login_error_message'] = "Invalid username or password";
             header("location: login.php");
         }
     }
     else
     {
+        $_SESSION['login_error_message'] = "Invalid username or password";
         header("location: login.php");
     }
 ?>

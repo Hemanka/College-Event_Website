@@ -438,5 +438,5 @@
     $connect->close();
 
     // this line needs to be removed
-    echo "SUCCESS!";
+    // echo "SUCCESS!";
 ?>
