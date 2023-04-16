@@ -28,6 +28,7 @@
 
         <div>
             <nav>
+                <div>
                 <a class="nav_text" href = "public_event.php">Public Events</a>
                 <a class="nav_text" href = "private_event.php">Private Events</a>
                 <a class="nav_text" href = "rso_event.php">RSO Events</a>
@@ -42,8 +43,12 @@
                     <a class="nav_text" href = "create_uni_page.php">Create New University</a>
                     <a class="nav_text" href = "event_approval_page.php">Event Approvals</a>
                 <?php }?>
+                </div>
 
+
+                <div>
                 <a class="nav_text logout_text" href = "logout.php">Log out</a>
+                </div>
             </nav>
         </div>
 
