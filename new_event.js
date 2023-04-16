@@ -35,6 +35,7 @@ function displayJoinRso()
     document.getElementById("leave_rso_button").style.display = "block";
     document.getElementById("join_rso_form").style.display = "block";
     document.getElementById("leave_rso_form").style.display = "none";
+    document.getElementById("rso_success_message_box").style.display = "none";
 }
 
 function displayLeaveRso()
@@ -44,4 +45,5 @@ function displayLeaveRso()
     document.getElementById("leave_rso_button").style.display = "none";
     document.getElementById("join_rso_form").style.display = "none";
     document.getElementById("leave_rso_form").style.display = "block";
+    document.getElementById("rso_success_message_box").style.display = "none";
 }

@@ -66,6 +66,15 @@
     <body>
         <h1>Private event Information</h1>
 
+        <div class="success_message">
+            <?php if (isset($_SESSION['event_success_message'])) { ?>
+                <p><?php echo $_SESSION['event_success_message'];?></p>
+            <?php
+                    unset($_SESSION['event_success_message']);
+                }
+            ?>
+        </div>
+
         <?php while ($private_event_info = mysqli_fetch_array($private_event_result)) {?>
             <a href="event_info.php?<?php echo $private_event_info['event_id']?>">
                 <div class="events_info">

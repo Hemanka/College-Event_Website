@@ -173,5 +173,5 @@
 
 	// STILL NEED TO CHECK IF THIS WORKS
 	$_SESSION['rso_created_success_message'] = "RSO Created Successfully";
-	header("location: public_event.php");
+	header("location: rso_event.php");
 ?>

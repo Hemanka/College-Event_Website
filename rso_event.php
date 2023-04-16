@@ -137,7 +137,14 @@
             </form>
         </div>
 
-        <div class="success_message">
+        <div id="rso_success_message_box" class="success_message">
+            <?php if (isset($_SESSION['rso_created_success_message'])) { ?>
+                <p><?php echo $_SESSION['rso_created_success_message'];?></p>
+            <?php
+                    unset($_SESSION['rso_created_success_message']);
+                }
+            ?>
+
             <?php if (isset($_SESSION['join_success_message'])) { ?>
                 <p><?php echo $_SESSION['join_success_message'];?></p>
             <?php
@@ -152,8 +159,14 @@
                 }
             ?>
 
-            <!-- need to show the message for success in creating a public event -->
-            
+            <!-- need to show the message for success in creating a rso event -->
+            <?php if (isset($_SESSION['event_success_message'])) { ?>
+                <p><?php echo $_SESSION['event_success_message'];?></p>
+            <?php
+                    unset($_SESSION['event_success_message']);
+                }
+            ?>
+
         </div>
 
         <?php if (strcasecmp($_SESSION["current_user_role"], "Super Admin") == 0) {?>

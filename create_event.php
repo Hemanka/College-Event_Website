@@ -155,11 +155,15 @@
             $event_id  = $get_event_id_info['event_id'];
 
             $sql = "INSERT INTO Approval(event_id, request_user_id)
-                    VALUE ('$event_id, $user_id')";
+                    VALUE ('$event_id', '$user_id')";
             $status = mysqli_query($connect, $sql);
+            $_SESSION['event_success_message'] = "Event Created Successfully. WAITING for Approval";
+        }
+        else
+        {
+            $_SESSION['event_success_message'] = "Event Created Successfully.";
         }
 
-        $_SESSION['event_success_message'] = "Event Created Successfully. WAITING for Approval";
         header("location: public_event.php");
     }
     // $create_event_sql();

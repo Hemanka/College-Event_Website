@@ -18,7 +18,8 @@
     }
 
     // for displaying all the public events
-    $sql = "SELECT * FROM Events WHERE event_type = 'Public'";
+    $sql = "SELECT * FROM Events WHERE event_type = 'Public'
+                                    AND event_id NOT IN (SELECT event_id FROM Approval)";
     $result = mysqli_query($connect, $sql);
     $numRows = mysqli_num_rows($result);
     //need to remove this
@@ -57,16 +58,23 @@
 
     <body>
         <h1>Public event Information</h1>
+        <!-- <button onclick="displayApprovalForm()" id="approval_button" name="approval_button">Approval</button> -->
 
         <div class="success_message">
-            <?php if (isset($_SESSION['rso_created_success_message'])) { ?>
+            <!-- <?php if (isset($_SESSION['rso_created_success_message'])) { ?>
                 <p><?php echo $_SESSION['rso_created_success_message'];?></p>
             <?php
                     unset($_SESSION['rso_created_success_message']);
                 }
-            ?>
+            ?> -->
 
             <!-- need to show the message for success in creating a public event -->
+            <?php if (isset($_SESSION['event_success_message'])) { ?>
+                <p><?php echo $_SESSION['event_success_message'];?></p>
+            <?php
+                    unset($_SESSION['event_success_message']);
+                }
+            ?>
             
         </div>
 
