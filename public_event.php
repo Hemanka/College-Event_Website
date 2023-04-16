@@ -83,9 +83,9 @@
             <div class="events_list">
                 <a href="event_info.php?<?php echo $info['event_id']?>">
                     <div class="event_info">
-                    <h2 class="event_name"><?php echo $info['event_name']?></h2>
-                    <!-- <p>Category: <?php echo $info['event_cat']?></p> -->
-                    <p><?php echo $info['event_description']?></p>
+                        <h2 class="event_name"><?php echo $info['event_name']?></h2>
+                        <!-- <p>Category: <?php echo $info['event_cat']?></p> -->
+                        <p class="desciption"><?php echo $info['event_description']?></p>
                     </div>
                     <?php
                         $event_id = $info['event_id'];

@@ -1,6 +1,11 @@
 <?php
     session_start();
 
+    if (!isset($_SESSION["current_user_id"]))
+    {
+        header("location: login.php");
+    }
+
     $db_servername = "localhost";
     $db_username = "root";
     $db_password = "password";
@@ -64,6 +69,7 @@
     </head>
 
     <body>
+    <div class ="info">
         <h1>Private event Information</h1>
 
         <div class="success_message">
@@ -76,10 +82,9 @@
         </div>
 
         <?php while ($private_event_info = mysqli_fetch_array($private_event_result)) {?>
+            <div class="events_list">
             <a href="event_info.php?<?php echo $private_event_info['event_id']?>">
-                <div class="events_info">
-                    <h2><?php echo $private_event_info['event_name']?></h2>
-                    <p>--the date and time would be displayed here--</p>
+                <div class="event_info">
                     <p>University: 
                         <?php 
                             $event_uni_id = $private_event_info['uni_id'];
@@ -90,12 +95,29 @@
 
                             echo $get_uniname_info['uni_name'];
                         ?>
-                    </p>
-                    <p><?php echo $private_event_info['event_description']?></p>
+                    </p>    
+                    <h2 class="event_name"><?php echo $private_event_info['event_name']?></h2>
+                    <p class="desciption"><?php echo $private_event_info['event_description']?></p>
+                </div>
+                <?php
+                        $event_id = $private_event_info['event_id'];
+                        $date_display_sql = "SELECT * FROM Events E1 WHERE E1.event_id='$event_id'";
+                        $date_display_result = mysqli_query($connect, $date_display_sql);
+                        $date_display_info = mysqli_fetch_array($date_display_result);
+
+                        $current_event_date_info = date('j F Y', strtotime($date_display_info['event_date']));
+                        $current_start_time_info = date('g:i A', strtotime($date_display_info['start_time']));
+                        $current_end_time_info = date('g:i A', strtotime($date_display_info['end_time']));
+                    ?>
+                <div class="event_info time_info">
+                <p>Date: <?php echo $current_event_date_info;?></p>
+                        <p>Time: <?php echo $current_start_time_info;?> - <?php echo $current_end_time_info;?></p>    
+                <!-- <p>--the date and time would be displayed here--</p> -->
                     <!-- <br> -->
                 </div>
             </a>
-        
+            </div>
         <?php }?>
+    </div>
     </body>
 </html>

@@ -31,7 +31,7 @@ button {
 
 }
 
-#login_button:hover {
+#login_button:hover, #join_rso_button:hover, #leave_rso_button:hover {
     color: white;
     background-color: #064420;
 }
@@ -52,6 +52,8 @@ button {
 .info {
     margin-left: 10%;
     margin-right: 10%;
+    /* display: flex;
+    justify-content: space-between; */
     /* border: 10px; */
 }
 
@@ -148,6 +150,12 @@ a {
     padding-right: 25px;
     border-radius: 5px;
     background-color: #A0D995;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* display: flex; */
+    /* float: right; */
+    /* justify-content: space-between; */
+
     /* color: white; */
     /* color: #F2EDD7; */
     /* background-color: rgb(93, 240, 161); */
@@ -155,9 +163,10 @@ a {
 
 .time_info {
     text-align: left;
-    /* display: flex; */
+    display: flex;
     float: right;
-    justify-content: right;
+    /* justify-content: right; */
+    /* margin-left: 300px; */
     /* color: white; */
 
     /* display: inline-block; */
@@ -165,9 +174,23 @@ a {
 
 .event_info {
     display: inline-block;
+    width: 400px;
     margin-left: 12px;
     margin-right: 12px;
     color: #064420;
+}
+
+.event_name {
+    font-size: 30px;
+}
+
+.desciption {
+    margin-left: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* h2, p {

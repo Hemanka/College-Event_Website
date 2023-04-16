@@ -1,6 +1,11 @@
 <?php
     session_start();
 
+    if (!isset($_SESSION["current_user_id"]))
+    {
+        header("location: login.php");
+    }
+
     $db_servername = "localhost";
     $db_username = "root";
     $db_password = "password";
@@ -80,14 +85,20 @@
     </head>
 
     <body>
+        <div class="info">
+            <!-- <a href="join_rso.php">Join RSO</a>
+            <a href="leave_rso.php">Leave RSO</a> -->
+            
         <!-- the h1 and the join and leave button would be in the same line -->
-        <h1>RSO event Information</h1>
-        <a href="join_rso.php">Join RSO</a>
-        <a href="leave_rso.php">Leave RSO</a>
-
-        <button onclick="displayJoinRso()" id="join_rso_button" name="join_rso_button">Join Rso</button>
-        <button onclick="displayLeaveRso()" id="leave_rso_button" name="leave_rso_button">Leave Rso</button>
-
+        <div class="header">
+            <div class="title">
+                <h1 class="page_title">RSO event Information</h1>
+            </div>
+            <div class="action_rso">
+                <button onclick="displayJoinRso()" id="join_rso_button" name="join_rso_button">Join Rso</button>
+                <button onclick="displayLeaveRso()" id="leave_rso_button" name="leave_rso_button">Leave Rso</button>
+            </div>
+        </div>
         <!-- form to join the rso -->
         <div id="join_rso_form" style="display: none;">
             <form action="join_rso.php" method="post">
@@ -184,14 +195,40 @@
             $user_rso_result_numRows = mysqli_num_rows($user_rso_result);
             if ($user_rso_result_numRows != 0) {?>
             <?php while ($user_rso_info = mysqli_fetch_array($user_rso_result)) {?>
+            <div class="events_list">
                 <a href="event_info.php?<?php echo $user_rso_info['event_id']?>">
-                    <div class="events_info">
-                        <h2><?php echo $user_rso_info['event_name']?></h2>
-                        <p>--the date and time would be displayed here--</p>
-                        <p><?php echo $user_rso_info['event_description']?></p>
-                        
+                    <div class="event_info">
+                        <p>RSO Name: 
+                            <?php 
+                                $event_rso_id = $user_rso_info['rso_id'];
+
+                                $get_rsoname_sql = "SELECT * FROM Rso R1 WHERE R1.rso_id = '$event_rso_id'";
+                                $get_rsoname_result = mysqli_query($connect, $get_rsoname_sql);
+                                $get_rsoname_info = mysqli_fetch_array($get_rsoname_result);
+
+                                echo $get_rsoname_info['rso_name'];
+                            ?>
+                        </p>    
+                        <h2 class="event_name"><?php echo $user_rso_info['event_name']?></h2>
+                        <p class="desciption"><?php echo $user_rso_info['event_description']?></p>
+                    </div>
+                    <?php
+                        $event_id = $user_rso_info['event_id'];
+                        $date_display_sql = "SELECT * FROM Events E1 WHERE E1.event_id='$event_id'";
+                        $date_display_result = mysqli_query($connect, $date_display_sql);
+                        $date_display_info = mysqli_fetch_array($date_display_result);
+
+                        $current_event_date_info = date('j F Y', strtotime($date_display_info['event_date']));
+                        $current_start_time_info = date('g:i A', strtotime($date_display_info['start_time']));
+                        $current_end_time_info = date('g:i A', strtotime($date_display_info['end_time']));
+                    ?>
+                    <div class="event_info time_info">
+                        <!-- <p>--the date and time would be displayed here--</p> -->
+                        <p>Date: <?php echo $current_event_date_info;?></p>
+                        <p>Time: <?php echo $current_start_time_info;?> - <?php echo $current_end_time_info;?></p>
                     </div>
                 </a>
+            </div>
             <?php }?>
         <?php } else { ?>
             <!-- // this should be excuted if the no results found
@@ -199,6 +236,7 @@
 
             <p>No Upcoming events</p>
         <?php }?>
+    </div>
 
         <!-- <?php //}?> -->
 
