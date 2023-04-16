@@ -8,8 +8,13 @@
  -->
 
 <?php
-    echo "on the event_info page";
+    // echo "on the event_info page";
     session_start();
+
+    if (!isset($_SESSION["current_user_id"]))
+    {
+        header("location: login.php");
+    }
 
     $db_servername = "localhost";
     $db_username = "root";
@@ -48,24 +53,9 @@
 
         <meta name="viewpoint" content="width=device-width">
         <?php 
-            // $_SESSION["current_user_role"] = "Student";
             if (isset($_SESSION["current_user_role"]))
             {
                 require 'nav_bar.php';
-                // if (strcasecmp($_SESSION["current_user_role"], "Student") == 0)
-                // {
-                //     require 'student_user_nav.php';
-                // }
-                // elseif (strcasecmp($_SESSION["current_user_role"], "Admin") == 0)
-                // {
-                //     require 'admin_user_nav.php';
-                // }
-                // else
-                // {
-                //     // nothing
-                // }
-
-                // $_SESSION["message_testing"] = "message working";
             }
         ?>
 
@@ -74,9 +64,24 @@
     <body>
         <!-- <?php //while ($info = mysqli_fetch_array($result)) {?> -->
             <!-- basic information of the current event -->
-            <h1><?php echo $info['event_name']?></h1>
+        <div class="info">
+            <div class="header">
+                <div class="title">
+                    <h1 class="page_title"><?php echo $info['event_name']?></h1>
+                </div>
+
+                <div class="action_rso">
+                    <?php if (strcasecmp($info['event_type'], "Public") == 0) {?>
+                        <a class="go_back" href="public_event.php"> Go Back</a>
+                    <?php } else if (strcasecmp($info['event_type'], "Private") == 0) {?>
+                        <a class="go_back" href="private_event.php"> Go Back</a>
+                    <?php } else if (strcasecmp($info['event_type'], "Rso") == 0) {?>
+                        <a class="go_back" href="rso_event.php"> Go Back</a>
+                    <?php } else { /* this should never run*/ }?>
+                </div>
+            </div>
             <!-- <> -->
-            <p>--the date and time would be displayed here--</p>
+            <!-- <p>--the date and time would be displayed here--</p> -->
             <!-- date and time of the event is displayed here -->
             <?php
                 $get_date_sql = "SELECT *
@@ -99,7 +104,7 @@
             <!-- description of the event is displayed -->
             <p>Description: <?php echo $info['event_description']?></p>
 
-            <p>--map will be displayed here--</p>
+            <!-- <p>--map will be displayed here--</p> -->
 
             <!-- code to get the long and lat -->
             <?php
@@ -123,7 +128,10 @@
                 // echo $temp_get_info['longitude'];
                 
             ?>
-
+            <div id="event_info_map">
+                <p>Location Name: <?php echo $get_loc_info['loc_name'];?></p>
+                <iframe id="single_location" src="https://maps.google.com/maps?q=<?php echo $latitude;?>,<?php echo $longitude;?>&output=embed"></iframe>
+            </div>
 
             <h3>Comments:</h3>
 
@@ -175,18 +183,19 @@
                     </form>
                 </div>
             <?php }?>
+        </div>
         <!-- <?php //}?> -->
         
 
         <!-- need to be done: return back to the page where the user was previously -->
         <!-- NEED TO CHANGE THE DISPLAY OF THE LINK TO LOOK MORE LIKE A BUTTON -->
-        <?php if (strcasecmp($info['event_type'], "Public") == 0) {?>
+        <!-- <?php if (strcasecmp($info['event_type'], "Public") == 0) {?>
             <a href="public_event.php"> Go Back</a>
         <?php } else if (strcasecmp($info['event_type'], "Private") == 0) {?>
             <a href="private_event.php"> Go Back</a>
         <?php } else if (strcasecmp($info['event_type'], "Rso") == 0) {?>
             <a href="rso_event.php"> Go Back</a>
-        <?php } else { /* this should never run*/ }?>
+        <?php } else { /* this should never run*/ }?> -->
         <!-- <a href=""></a> -->
     </body>
 
