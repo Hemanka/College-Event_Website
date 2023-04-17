@@ -50,7 +50,8 @@
         // get the list of all the active rso, if the current user is a Super Admin
         if (strcasecmp(($_SESSION["current_user_role"]), 'Super Admin') == 0)
         {
-            $rso_list_sql = "SELECT * FROM Rso R1 WHERE R1.status='Active'";
+            // echo "running this";
+            $rso_list_sql = "SELECT * FROM Rso R1 WHERE R1.rso_status='Active'";
                             //  R1.rso_id IN (SELECT M1.rso_id FROM Member_rso M1 WHERE M1.user_id = '$user_id_display')";
             // $rso_list_result = mysqli_query($connect, $rso_list_sql);
             if ($rso_list_result = mysqli_query($connect, $rso_list_sql))
@@ -81,7 +82,7 @@
             }
         ?>
 
-        <script src="new_event.js"></script>
+        <!-- <script src="new_event.js"></script> -->
 
         <!-- the following two are for the map -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
@@ -156,17 +157,7 @@
                 
                 <br><br>
 
-                <?php if (strcasecmp($_SESSION["current_user_role"], 'Super Admin') == 0) {
-                    $sql = "SELECT * FROM University";
-                    $result = mysqli_query($connect, $sql);
-                ?>
-                    <label for="uni_event">University: </label>
-                    <select id="uni_event" name="uni_event">
-                        <?php while ($info = mysqli_fetch_array($result)) {?>
-                            <option value="<?php echo $info['uni_id']?>"><?php echo $info['uni_name'];?></option>
-                        <?php }?>
-                    </select>
-                <?php } ?>
+                
 
                 <!-- <div id="chose_public_event" style="display: none;">
                     <p>public_event</p>
@@ -174,6 +165,18 @@
 
                 <div id="chose_private_event" style="display: none;">
                     <!-- <p>private_event</p> -->
+                    <?php if (strcasecmp($_SESSION["current_user_role"], 'Super Admin') == 0) {
+                        $sql = "SELECT * FROM University";
+                        $result = mysqli_query($connect, $sql);
+                    ?>
+                        <label for="uni_event">University: </label>
+                        <select id="uni_event" name="uni_event">
+                            <?php while ($info = mysqli_fetch_array($result)) {?>
+                                <option value="<?php echo $info['uni_id']?>"><?php echo $info['uni_name'];?></option>
+                            <?php }?>
+                        </select>
+                    <?php } ?>
+                    <br><br>
                 </div>
 
                 <!-- show the list of the rso that the user can create the event for -->
@@ -197,6 +200,27 @@
 
                     <br><br>
                 </div>
+
+                <script>
+                    function eventType(event)
+                    {
+                        if (event.value == "private")
+                        {
+                            document.getElementById("chose_private_event").style.display = "block";
+                            document.getElementById("chose_rso_event").style.display = "none";
+                        }
+                        else if (event.value == "rso")
+                        {
+                            document.getElementById("chose_private_event").style.display = "none";
+                            document.getElementById("chose_rso_event").style.display = "block";
+                        }
+                        else
+                        {
+                            document.getElementById("chose_private_event").style.display = "none";
+                            document.getElementById("chose_rso_event").style.display = "none";
+                        }
+                    }
+                </script>
 
 
                 <!-- depending on the event type ask for related input -->

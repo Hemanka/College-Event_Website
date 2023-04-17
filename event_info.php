@@ -78,6 +78,17 @@
                     <?php } else if (strcasecmp($info['event_type'], "Rso") == 0) {?>
                         <a class="go_back" href="rso_event.php"> Go Back</a>
                     <?php } else { /* this should never run*/ }?>
+
+                    <?php 
+                        $event_approval_sql = "SELECT * FROM Approval A1 WHERE A1.event_id='$current_event_info'";
+                        if ($event_approval_result = mysqli_query($connect, $event_approval_sql))
+                        {
+                            $event_approval_info = mysqli_fetch_array($event_approval_result);
+                    ?>
+                            <!-- // echo "approval need<br>"; -->
+                            <a class="go_back" href="event_approval.php?<?php echo $event_approval_info['approval_id']?>"> Approve </a>
+                            <a class="go_back" href="event_decline.php?<?php echo $event_approval_info['approval_id']?>"> Decline</a>
+                    <?php } ?>
                 </div>
             </div>
             <!-- <> -->

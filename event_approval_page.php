@@ -22,7 +22,7 @@
 
     $numRows = mysqli_num_rows($result);
     //need to remove this
-    echo $numRows;
+    // echo $numRows;
 ?>
 
 <!DOCTYPE html>
@@ -43,24 +43,45 @@
     </head>
 
     <body>
-        <h1>Event Approval Page</h1>
+        <div class="info">
+        <h1 class="page_title">Event Approval Page</h1>
 
         <?php if ($numRows > 0) { 
             // $get_approval_sql = "SELECT * FROM Events WHERE event_id";    
         ?>
             <?php while ($info = mysqli_fetch_array($result)) {?>
+                <div class="events_list">
                 <a href="event_info.php?<?php echo $info['event_id']?>">
-                    <div class="events_info">
+                    <div class="event_info">
                         <h2><?php echo $info['event_name']?></h2>
-                        <p>--the date and time would be displayed here--</p>
                         <p><?php echo $info['event_description']?></p>
+                        <!-- <p>--the date and time would be displayed here--</p> -->
+                        <!-- <br> -->
+                    </div>
+                    <?php
+                        $event_id = $info['event_id'];
+                        $date_display_sql = "SELECT * FROM Events E1 WHERE E1.event_id='$event_id'";
+                        $date_display_result = mysqli_query($connect, $date_display_sql);
+                        $date_display_info = mysqli_fetch_array($date_display_result);
+
+                        $current_event_date_info = date('j F Y', strtotime($date_display_info['event_date']));
+                        $current_start_time_info = date('g:i A', strtotime($date_display_info['start_time']));
+                        $current_end_time_info = date('g:i A', strtotime($date_display_info['end_time']));
+                    ?>
+                    <div class="event_info time_info">
+                        <p>Date: <?php echo $current_event_date_info;?></p>
+                        <p>Time: <?php echo $current_start_time_info;?> - <?php echo $current_end_time_info;?></p>
+                        <!-- <p>--the date and time would be displayed here--</p> -->
+                        <!-- <p><?php echo $info['event_description']?></p> -->
                         <!-- <br> -->
                     </div>
                 </a>
+            </div>
             
             <?php }?>
         <?php } else {?>
             <p>No Events Need to be approved</p>
         <?php }?>
+        </div>
     </body>
 </html>

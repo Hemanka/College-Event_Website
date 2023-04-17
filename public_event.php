@@ -59,6 +59,7 @@
     <body>
         <div class="info">
         <h1 class="page_title">Public event Information</h1>
+        <!-- <a href = "create_rso_page.php">Create New RSO</a> -->
         <!-- <button onclick="displayApprovalForm()" id="approval_button" name="approval_button">Approval</button> -->
 
         <div class="success_message">
