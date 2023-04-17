@@ -35,7 +35,7 @@
         $user_id_display = $_SESSION["current_user_id"];
 
         $rso_list_sql = "SELECT * FROM Rso R1 
-                        WHERE R1.admin_id = '$user_id_display' AND R1.status='Active'";
+                        WHERE R1.admin_id = '$user_id_display' AND R1.rso_status='Active'";
                         //  R1.rso_id IN (SELECT M1.rso_id FROM Member_rso M1 WHERE M1.user_id = '$user_id_display')";
         // $rso_list_result = mysqli_query($connect, $rso_list_sql);
         if ($rso_list_result = mysqli_query($connect, $rso_list_sql))
@@ -170,8 +170,8 @@
                                     <option value="<?php echo $info['uni_id']?>"><?php echo $info['uni_name'];?></option>
                                 <?php }?>
                             </select>
+                            <br><br>
                         <?php } ?>
-                        <br><br>
                     </div>
 
                     <!-- show the list of the rso that the user can create the event for -->
