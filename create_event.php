@@ -28,6 +28,11 @@
         // echo "<br>";
     }
 
+    if (isset($_POST['uni_event']))
+    {
+        $new_event_uni = $_POST['uni_event'];
+    }
+
     $db_servername = "localhost";
     $db_username = "root";
     $db_password = "password";
@@ -53,6 +58,13 @@
     // gets the current events location id
     $event_check_sql = "SELECT * FROM Event_location WHERE latitude='$new_event_lat' AND longitude='$new_event_lng'";
     $event_check_result = mysqli_query($connect, $event_check_sql);
+    $numRows = mysqli_num_rows($event_check_result);
+    if ($numRows <= 0)
+    {
+        $_SESSION['error_message'] = "Invalid location choosen";
+        header("location: create_event_page.php");
+        die();
+    }
     $event_check_info = mysqli_fetch_array($event_check_result);
     $loc_id = $event_check_info['loc_id'];
 
@@ -119,7 +131,11 @@
     $event_check_result = mysqli_query($connect, $event_check_sql);
     $event_check_info = mysqli_fetch_array($event_check_result);
     $user_email_address = $event_check_info['user_email'];
-    $user_uni_id = $event_check_info['uni_id'];
+
+    if (!isset($new_event_uni))
+    {
+        $new_event_uni = $event_check_info['uni_id'];
+    }
 
     // event can be created/requested to be created successfully.
     if ((strcasecmp($new_event_type, 'Rso') == 0))
@@ -138,7 +154,7 @@
         $sql = "INSERT INTO Events(event_name, event_cat, event_description, contact_number, contact_email, 
                                  event_date, start_time, end_time, loc_id, event_type, uni_id)
                 VALUE ('$new_event_name', '$new_event_cat', '$new_event_description', '$phone_number', '$user_email_address', 
-                     '$new_event_date', '$new_event_start_time', '$new_event_end_time', '$loc_id', 'Private', '$user_uni_id')";
+                     '$new_event_date', '$new_event_start_time', '$new_event_end_time', '$loc_id', 'Private', '$new_event_uni')";
         $status = mysqli_query($connect, $sql);
 
         $_SESSION['event_success_message'] = "Event Created Successfully";

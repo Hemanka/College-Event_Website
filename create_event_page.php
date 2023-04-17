@@ -35,10 +35,34 @@
         $user_id_display = $_SESSION["current_user_id"];
 
         $rso_list_sql = "SELECT * FROM Rso R1 
-                        WHERE R1.admin_id = '$user_id_display'";
+                        WHERE R1.admin_id = '$user_id_display' AND R1.status='Active'";
                         //  R1.rso_id IN (SELECT M1.rso_id FROM Member_rso M1 WHERE M1.user_id = '$user_id_display')";
-        $rso_list_result = mysqli_query($connect, $rso_list_sql);
-        $rso_list_numRows = mysqli_num_rows($rso_list_result);
+        // $rso_list_result = mysqli_query($connect, $rso_list_sql);
+        if ($rso_list_result = mysqli_query($connect, $rso_list_sql))
+        {
+            $rso_list_numRows = mysqli_num_rows($rso_list_result);
+        }
+        else
+        {
+            $rso_list_numRows = 0;
+        }
+
+        // get the list of all the active rso, if the current user is a Super Admin
+        if (strcasecmp(($_SESSION["current_user_role"]), 'Super Admin') == 0)
+        {
+            $rso_list_sql = "SELECT * FROM Rso R1 WHERE R1.status='Active'";
+                            //  R1.rso_id IN (SELECT M1.rso_id FROM Member_rso M1 WHERE M1.user_id = '$user_id_display')";
+            // $rso_list_result = mysqli_query($connect, $rso_list_sql);
+            if ($rso_list_result = mysqli_query($connect, $rso_list_sql))
+            {
+                $rso_list_numRows = mysqli_num_rows($rso_list_result);
+            }
+            else
+            {
+                $rso_list_numRows = 0;
+            }
+        }
+        // $rso_list_numRows = mysqli_num_rows($rso_list_result);
     }
 ?>
 
@@ -136,10 +160,10 @@
                     $sql = "SELECT * FROM University";
                     $result = mysqli_query($connect, $sql);
                 ?>
-                    <label for="uni_event">User University: </label>
+                    <label for="uni_event">University: </label>
                     <select id="uni_event" name="uni_event">
                         <?php while ($info = mysqli_fetch_array($result)) {?>
-                            <option value="<?php echo $info['uni_name']?>"><?php echo $info['uni_name'];?></option>
+                            <option value="<?php echo $info['uni_id']?>"><?php echo $info['uni_name'];?></option>
                         <?php }?>
                     </select>
                 <?php } ?>
@@ -167,7 +191,8 @@
                             <?php } ?>
                         </select>
                     <?php } else {?>
-                        <p>Sorry RSO Events can not be created.</p>
+                        <p>Sorry You Can Not Create A RSO Event Because You Not Part Of An Active RSO</p>
+                            <!-- can not be created.</p> -->
                     <?php } ?>
 
                     <br><br>
