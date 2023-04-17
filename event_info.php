@@ -92,8 +92,8 @@
                             $event_approval_info = mysqli_fetch_array($event_approval_result);
                     ?>
                             <!-- // echo "approval need<br>"; -->
-                            <a class="go_back" href="event_approval.php?<?php echo $event_approval_info['approval_id']?>"> Approve </a>
-                            <a class="go_back" href="event_decline.php?<?php echo $event_approval_info['approval_id']?>"> Decline</a>
+                            <a id="accept_button" href="event_approval.php?<?php echo $event_approval_info['approval_id']?>"> Approve </a>
+                            <a id="decline_button" href="event_decline.php?<?php echo $event_approval_info['approval_id']?>"> Decline</a>
                     <?php } ?>
                 </div>
             </div>

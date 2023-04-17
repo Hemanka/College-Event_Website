@@ -41,7 +41,7 @@
 
                 <?php if (strcasecmp($_SESSION["current_user_role"], "Super Admin") == 0) {?>
                     <a class="nav_text" href = "create_uni_page.php">Create New University</a>
-                    <a class="nav_text" href = "event_approval_page.php">Event Approvals</a>
+                    <!-- <a class="nav_text" href = "event_approval_page.php">Event Approvals</a> -->
                 <?php }?>
                 </div>
 

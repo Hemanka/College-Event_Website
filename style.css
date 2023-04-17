@@ -37,6 +37,28 @@ input {
     background-color: #064420;
 }
 
+#accept_button {
+    text-align: center;
+    border-radius: 5px;
+    margin:10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    background-color: green;
+    color: white;
+}
+
+#decline_button {
+    text-align: center;
+    border-radius: 5px;
+    margin:10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    background-color: red;
+    color: white;
+}
+
 /* .go_back {
     text-align: center;
     border-radius: 5px;
@@ -62,6 +84,12 @@ input {
 
 .error_message {
     color: red;
+    font-weight: bold;
+}
+
+.success_message {
+    color: green;
+    font-weight: bold;
 }
 
 .info {
