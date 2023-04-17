@@ -73,7 +73,7 @@
                     <br>
                     <br>
 
-                    <button class="submit_button" type="submit">Log in</button>
+                    <button class="submit_button" type="submit">Create University</button>
                 </div>
             </form>
         </div>

@@ -64,6 +64,17 @@ input {
     border-width: 1px;
 }
 
+/* .submit_button {
+    text-align: center;
+    border-radius: 5px;
+    margin:10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: solid 0.1px;
+    background-color: #E4EFE7;
+
+} */
+
 /* button { */
 #login_button, #join_rso_button, #leave_rso_button, .go_back, .submit_button {
     text-align: center;
@@ -71,7 +82,8 @@ input {
     margin:10px;
     padding: 10px 20px;
     font-size: 20px;
-    border: none;
+    /* border: none; */
+    border: solid 0.1px;
     background-color: #E4EFE7;
 
 }
@@ -376,4 +388,6 @@ a:hover {
 #uni_map {
     width: 500px;
     height: 500px;
+    margin-left: 10px;
+    border: solid 1px;
 }
