@@ -22,32 +22,33 @@
         ?>
     </head>
 
-    <body>
+    <body class="form_page">
 
-        <div class="user_info">
+        <div class="get_info_form">
             <!-- <div> -->
-            <form id="usersInfo" action="create_uni.php" method="post">
-                <h1 class="login_tag">Create University</h1>
+            <form class="create_form" action="create_uni.php" method="post">
+                <h1 class="form_title">Create University</h1>
+                
+                <div class="form_content">
 
-                <div class="error_message">
-                    <?php if (isset($_SESSION['uni_error_message'])) { ?>
-                        <p class="error_message"><?php echo $_SESSION['uni_error_message'];?></p>
-                    <?php
-                            unset($_SESSION['uni_error_message']);
-                        }
-                    ?>
-                </div>
+                    <div class="error_message">
+                        <?php if (isset($_SESSION['uni_error_message'])) { ?>
+                            <p class="error_message"><?php echo $_SESSION['uni_error_message'];?></p>
+                        <?php
+                                unset($_SESSION['uni_error_message']);
+                            }
+                        ?>
+                    </div>
 
-                <div class="success_message">
-                    <?php if (isset($_SESSION['uni_success_message'])) { ?>
-                        <p class="success_message"><?php echo $_SESSION['uni_success_message'];?></p>
-                    <?php
-                            unset($_SESSION['uni_success_message']);
-                        }
-                    ?>
-                </div>
+                    <div class="success_message">
+                        <?php if (isset($_SESSION['uni_success_message'])) { ?>
+                            <p class="success_message"><?php echo $_SESSION['uni_success_message'];?></p>
+                        <?php
+                                unset($_SESSION['uni_success_message']);
+                            }
+                        ?>
+                    </div>
 
-                <div class="login_form_text">
                     <label for="new_uni_name">University: </label>
                     <input type="text" id="new_uni_name" name="new_uni_name" required>
 
@@ -72,12 +73,9 @@
                     <br>
                     <br>
 
-                    
-
-                    <button id="login_button" type="submit">Log in</button>
+                    <button class="submit_button" type="submit">Log in</button>
                 </div>
             </form>
-        <!-- </div> -->
         </div>
 
         
