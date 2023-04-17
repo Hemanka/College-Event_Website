@@ -63,7 +63,9 @@
                 <h1 class="page_title">Public event Information</h1>
             </div>
             <div class="action_rso">
-                <a class="go_back" href = "event_approval_page.php">Event Approvals</a>
+                <?php if (strcasecmp($_SESSION["current_user_role"], "Super Admin") == 0) {?>
+                    <a class="go_back" href = "event_approval_page.php">Event Approvals</a>
+                <?php } ?>
             </div>
         </div>
         <!-- <a href = "create_rso_page.php">Create New RSO</a> -->
