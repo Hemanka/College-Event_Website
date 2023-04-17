@@ -6,7 +6,7 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-#usersInfo {
+.usersInfo {
     background-color: #FDFAF6;
     color: #064420;
     border-radius: 25px;
@@ -76,7 +76,20 @@ input {
 } */
 
 /* button { */
-#login_button, #join_rso_button, #leave_rso_button, .go_back, .submit_button {
+.login_button {
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: solid 0.1px;
+    background-color: #E4EFE7;
+
+}
+
+#join_rso_button, #leave_rso_button, .go_back, .submit_button {
     text-align: center;
     border-radius: 5px;
     margin:10px;
@@ -88,7 +101,7 @@ input {
 
 }
 
-#login_button:hover, #join_rso_button:hover, #leave_rso_button:hover, .go_back:hover, .submit_button:hover {
+.login_button:hover, #join_rso_button:hover, #leave_rso_button:hover, .go_back:hover, .submit_button:hover {
     color: white;
     background-color: #064420;
 }
@@ -136,6 +149,17 @@ input {
     margin-left: 25%;
     margin-top: 12%;
     color: #1B262C;
+}
+
+.option {
+    /* soemthing */
+    color: Black;
+}
+
+.login_link {
+    /* text-decoration: dashed; */
+    /* font-style:; */
+    /* text-underline-position: under; */
 }
 
 .error_message {

@@ -1,5 +1,7 @@
 <?php
 	require 'create_table.php';
+	
+	session_start();
 
 	$db_servername = "localhost";
     $db_username = "root";
@@ -25,64 +27,77 @@
         <link rel="stylesheet" href = "style.css" />
     </head>
 
-    <body>
+    <body class="form_page">
 
 		<!-- do this need a "require"? -->
-		<?php ?>
-			<form action="register_user.php" method="post">
-			<h1>REGISTER</h1>
-			<!-- may change/ create new css class -->
-			<div class="login_form_text">
+		<!-- <?php ?> -->
+		<div class="get_info_form">
+			<form class="usersInfo" action="register_user.php" method="post">
+				<h1 class="login_tag">Sign Up</h1>
+				<!-- may change/ create new css class -->
+				<div class="login_form_text">
 
-				<label for="user_fname">First name: </label>
-				<input type="text" id="user_fname" name="user_fname">
+					<div class="error_message">
+                        <?php if (isset($_SESSION['sign_up_error_message'])) { ?>
+                            <p><?php echo $_SESSION['sign_up_error_message'];?></p>
+                        <?php
+                                unset($_SESSION['sign_up_error_message']);
+                            }
+                        ?>
+                    </div>
 
-				<br>
-				<br>
+					<label for="user_fname">First name: </label>
+					<input type="text" id="user_fname" name="user_fname">
 
-				<label for="user_lname">Last name: </label>
-				<input type="text" id="user_lname" name="user_lname">
+					<br>
+					<br>
 
-				<br>
-				<br>
+					<label for="user_lname">Last name: </label>
+					<input type="text" id="user_lname" name="user_lname">
 
-				<label for="user_email">Email (will be used as username): </label>
-				<input type="text" id="user_email" name="user_email">
+					<br>
+					<br>
+					<!--  (will be used as username) -->
 
-				<br>
-				<br>
+					<label for="user_email">Email: </label>
+					<input type="text" id="user_email" name="user_email">
 
-				<label for="user_password">Password: </label>
-				<input type="password" id="user_password" name="user_password">
-				
-				<br>
-				<br>
+					<br>
+					<br>
 
-				<label for="user_role">User Role: </label>
-				<select id="user_role" name="user_role">
-					<option value="student">Student<?php?></option>
-					<option value="admin">Admin</option>
-					<option value="super_admin">Super Admin</option>
-				</select>
-				
-				<br>
-				<br>
+					<label for="user_password">Password: </label>
+					<input type="password" id="user_password" name="user_password">
+					
+					<br>
+					<br>
 
-				<!-- the user needs to choose a university -->
-				
-				<label for="user_uni_name">User University: </label>
-				<select id="user_uni_name" name="user_uni_name">
-					<?php while ($info = mysqli_fetch_array($result)) {?>
-						<option value="<?php echo $info['uni_name']?>"><?php echo $info['uni_name'];?></option>
-					<?php }?>
-				</select>
+					<!-- <label for="user_role">User Role: </label>
+					<select id="user_role" name="user_role">
+						<option value="student">Student<?php?></option>
+						<option value="admin">Admin</option>
+						<option value="super_admin">Super Admin</option>
+					</select>
+					
+					<br>
+					<br> -->
 
-				<br>
-				<br>
+					<!-- the user needs to choose a university -->
+					
+					<label for="user_uni_id">User University: </label>
+					<select id="user_uni_id" name="user_uni_id">
+						<?php while ($info = mysqli_fetch_array($result)) {?>
+							<option value="<?php echo $info['uni_id']?>"><?php echo $info['uni_name'];?></option>
+						<?php }?>
+					</select>
 
-				<button type="submit">Register</button>
-			</div>
-		</form>
+					<br>
+					<br>
+
+					<button class="login_button" type="submit">Sign Up</button>
+					<p class="option">or <u><a class="login_link" href="login.php">Login</a></u></p>
+				</div>
+			</form>
+		</div>
 
 	</body>
 

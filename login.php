@@ -18,15 +18,29 @@
 
         <div class="user_info">
             <!-- <div> -->
-            <form id="usersInfo" action="sign_in_user.php" method="post">
+            <form class="usersInfo" action="sign_in_user.php" method="post">
                 <h1 class="login_tag">LOGIN</h1>
 
-                <?php if (isset($_SESSION['login_error_message'])) { ?>
-                    <p class="error_message"><?php echo $_SESSION['login_error_message'];?></p>
-                <?php
-                        unset($_SESSION['login_error_message']);
-                    }
-                ?>
+                <div class="error_message">
+                    <?php if (isset($_SESSION['login_error_message'])) { ?>
+                        <p><?php echo $_SESSION['login_error_message'];?></p>
+                    <?php
+                            unset($_SESSION['login_error_message']);
+                        }
+                    ?>
+                </div>
+
+
+
+                <div class="success_message">
+
+                    <?php if (isset($_SESSION['sign_up_success_message'])) { ?>
+                        <p><?php echo $_SESSION['sign_up_success_message'];?></p>
+                    <?php
+                            unset($_SESSION['sign_up_success_message']);
+                        }
+                    ?>
+                </div>
 
                 <div class="login_form_text">
                     <label for="username">Username: </label>
@@ -41,7 +55,9 @@
                     <br>
                     <br>
 
-                    <button id="login_button" type="submit">Log in</button>
+                    <button class="login_button" type="submit">Log in</button>
+                    <!-- <a href = "registration_page.php">Sign Up</a> -->
+                    <p class="option">or <u><a class="login_link" href = "registration_page.php">Sign Up</a></u></p>
                 </div>
             </form>
         <!-- </div> -->

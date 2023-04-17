@@ -71,29 +71,40 @@
                 </div>
 
                 <div class="action_rso">
-                    <?php if (strcasecmp($info['event_type'], "Public") == 0) {?>
-                        <a class="go_back" href="public_event.php"> Go Back</a>
-                    <?php } else if (strcasecmp($info['event_type'], "Private") == 0) {?>
-                        <a class="go_back" href="private_event.php"> Go Back</a>
-                    <?php } else if (strcasecmp($info['event_type'], "Rso") == 0) {?>
-                        <a class="go_back" href="rso_event.php"> Go Back</a>
-                    <?php } else { /* this should never run*/ }?>
-
-                    <?php 
+                    <?php
                         $event_approval_sql = "SELECT * FROM Approval A1 WHERE A1.event_id='$current_event_info'";
                         $event_approval_result = mysqli_query($connect, $event_approval_sql);
                         $length = mysqli_num_rows($event_approval_result);
+                    ?>
+                    <?php if ((strcasecmp($info['event_type'], "Public") == 0) && ($length <= 0)) {?>
+                        <a class="go_back" href="public_event.php"> Go Back</a>
+                    <?php } else if ((strcasecmp($info['event_type'], "Private") == 0) && ($length <= 0)) {?>
+                        <a class="go_back" href="private_event.php"> Go Back</a>
+                    <?php } else if ((strcasecmp($info['event_type'], "Rso") == 0) && ($length <= 0)) {?>
+                        <a class="go_back" href="rso_event.php"> Go Back</a>
+                    <?php } else { ?>
+                        <?php $event_approval_info = mysqli_fetch_array($event_approval_result); ?>
+                        <a class="go_back" href="event_approval_page.php"> Go Back</a>
+                        <?php if ($length > 0) {?>
+                            <a id="accept_button" href="event_approval.php?<?php echo $event_approval_info['approval_id']?>"> Approve </a>
+                            <a id="decline_button" href="event_decline.php?<?php echo $event_approval_info['approval_id']?>"> Decline</a>
+                    <?php } }?>
+
+                    <?php 
+                        // $event_approval_sql = "SELECT * FROM Approval A1 WHERE A1.event_id='$current_event_info'";
+                        // $event_approval_result = mysqli_query($connect, $event_approval_sql);
+                        // $length = mysqli_num_rows($event_approval_result);
                         if ($length > 0)
                         {
                             // $length = mysqli_num_rows($event_approval_result);
                             // echo $length;
                             // echo $event_approval_result;
                             // echo "event needs to be approved<br>";
-                            $event_approval_info = mysqli_fetch_array($event_approval_result);
+                            // $event_approval_info = mysqli_fetch_array($event_approval_result);
                     ?>
                             <!-- // echo "approval need<br>"; -->
-                            <a id="accept_button" href="event_approval.php?<?php echo $event_approval_info['approval_id']?>"> Approve </a>
-                            <a id="decline_button" href="event_decline.php?<?php echo $event_approval_info['approval_id']?>"> Decline</a>
+                            <!-- <a id="accept_button" href="event_approval.php?<?php echo $event_approval_info['approval_id']?>"> Approve </a>
+                            <a id="decline_button" href="event_decline.php?<?php echo $event_approval_info['approval_id']?>"> Decline</a> -->
                     <?php } ?>
                 </div>
             </div>
