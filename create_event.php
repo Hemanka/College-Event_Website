@@ -1,6 +1,11 @@
 <?php
     session_start();
 
+    if (!isset($_SESSION["current_user_id"]))
+    {
+        header("location: login.php");
+    }
+
     $new_event_name = $_POST['new_event_name'];
     $new_event_date = $_POST['new_event_date'];
     $new_event_start_time = $_POST['start_time'];

@@ -299,3 +299,9 @@ a:hover {
 /* table {
     margin-left: 15%; 
 } */
+
+/* map on create_event_page */
+#uni_map {
+    width: 500px;
+    height: 500px;
+}

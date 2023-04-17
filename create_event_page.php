@@ -13,6 +13,11 @@
 <?php
     session_start();
 
+    if (!isset($_SESSION["current_user_id"]))
+    {
+        header("location: login.php");
+    }
+
     $db_servername = "localhost";
     $db_username = "root";
     $db_password = "password";
@@ -53,6 +58,15 @@
         ?>
 
         <script src="new_event.js"></script>
+
+        <!-- the following two are for the map -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""/>
+
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin=""></script>
 
     </head>
 
@@ -175,10 +189,10 @@
 				</select>
                 <br><br> -->
 
-                <label for="loc_name">Location Name: </label>
+                <!-- <label for="loc_name">Location Name: </label>
                 <input type="text" id="loc_name" name="loc_name" required>
                 
-                <br><br>
+                <br><br> -->
                 
                 <label for="latitude">latitude: </label>
                 <input type="text" id="latitude" name="latitude" required>
@@ -189,6 +203,9 @@
                 <input type="text" id="longitude" name="longitude" required>
                 
                 <br><br>
+
+                <div id="uni_map"></div>
+                <script src="uni_loc.js"></script>
                 
                 <button type="submit">Create</button>
             </div>
