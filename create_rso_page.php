@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    if (!isset($_SESSION["current_user_id"]))
+    {
+        header("location: login.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -8,10 +13,17 @@
         <title>Create RSO</title>
         <meta name="viewpoint" content="width=device-width">
 
-        <link rel="stylesheet" href = "style.css" />
+        <!-- <link rel="stylesheet" href = "style.css" /> -->
+        <?php 
+            if (isset($_SESSION["current_user_role"]))
+            {
+                require 'nav_bar.php';
+            }
+        ?>
     </head>
 
     <body>
+        <!-- <div class="info"> -->
 
         <form action="create_rso.php" method="post">
             <h1>Create New RSO</h1>
@@ -64,7 +76,7 @@
                 <button type="submit">Create RSO</button>
             </div>
         </form>
-
+        <!-- </div> -->
         
 
     </body>

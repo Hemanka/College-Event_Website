@@ -44,7 +44,15 @@
 
     <body>
         <div class="info">
-        <h1 class="page_title">Event Approval Page</h1>
+        <!-- <h1 class="page_title">Event Approval Page</h1> -->
+        <div class="header">
+            <div class="title">
+                <h1 class="page_title">Event Approval Page</h1>
+            </div>
+            <div class="action_rso">
+                <a class="go_back" href = "public_event.php">Go Back</a>
+            </div>
+        </div>
 
         <?php if ($numRows > 0) { 
             // $get_approval_sql = "SELECT * FROM Events WHERE event_id";    
