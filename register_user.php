@@ -38,10 +38,24 @@
 	// if there already exists a User ID that is the same as the one trying to be inserted
 	if (mysqli_num_rows($result) > 0)
 	{
-		$_SESSION['sign_up_error_message'] = "Email already exists!";
+		$_SESSION['sign_up_error_message'] = "Email already exists.";
 		header("location:registration_page.php");
 		die();
 	}
+
+	$sql = "SELECT * FROM University WHERE uni_id = '$uni_id'";
+	$result = mysqli_query($connect, $sql);
+	$info = mysqli_fetch_array($result);
+	$uni_name = $info['uni_name'];
+
+	if (!str_contains(strtolower($user_email), strtolower($info['uni_email_domain'])))
+	{
+		$_SESSION['sign_up_error_message'] = "Your email domain does not match that of '$uni_name'";
+		header("location:registration_page.php");
+		die();
+	}
+
+
 
 	$insert_query = "INSERT INTO Users (user_fname, user_lname, user_role, uni_id,
 										user_email, user_password)
