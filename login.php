@@ -33,6 +33,12 @@
 
 
                 <div class="success_message">
+                    <?php if (isset($_SESSION['logout_success_message'])) { ?>
+                        <p><?php echo $_SESSION['logout_success_message'];?></p>
+                    <?php
+                            unset($_SESSION['logout_success_message']);
+                        }
+                    ?>
 
                     <?php if (isset($_SESSION['sign_up_success_message'])) { ?>
                         <p><?php echo $_SESSION['sign_up_success_message'];?></p>

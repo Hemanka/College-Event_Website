@@ -156,11 +156,11 @@ input {
     color: Black;
 }
 
-.login_link {
+/* .login_link {
     /* text-decoration: dashed; */
     /* font-style:; */
     /* text-underline-position: under; */
-}
+/* } */
 
 .error_message {
     color: red;

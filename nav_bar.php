@@ -1,5 +1,8 @@
 <?php
-    // session_start();
+    if (!isset($_SESSION["current_user_id"]))
+    {
+        header("location: login.php");
+    }
 
     $db_servername = "localhost";
     $db_username = "root";
