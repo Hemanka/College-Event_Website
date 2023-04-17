@@ -81,8 +81,14 @@
 
                     <?php 
                         $event_approval_sql = "SELECT * FROM Approval A1 WHERE A1.event_id='$current_event_info'";
-                        if ($event_approval_result = mysqli_query($connect, $event_approval_sql))
+                        $event_approval_result = mysqli_query($connect, $event_approval_sql);
+                        $length = mysqli_num_rows($event_approval_result);
+                        if ($length > 0)
                         {
+                            // $length = mysqli_num_rows($event_approval_result);
+                            // echo $length;
+                            // echo $event_approval_result;
+                            // echo "event needs to be approved<br>";
                             $event_approval_info = mysqli_fetch_array($event_approval_result);
                     ?>
                             <!-- // echo "approval need<br>"; -->
