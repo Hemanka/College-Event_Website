@@ -39,7 +39,7 @@
                     ?>
                 </div>
 
-                <label for="rso_name">RSO Name: </label>
+                <label for="new_rso_name">RSO Name: </label>
                 <input type="text" id="new_rso_name" name="new_rso_name" required>
 
                 <br><br>
