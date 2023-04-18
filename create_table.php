@@ -521,6 +521,18 @@
                     '2023-04-21', '16:00:00', '17:00:00', '1', 'Rso', '3')";
     $status = mysqli_query($connect, $sql);
 
+
+    $sql = "INSERT INTO Comments(comment_id, event_id, user_id, comment_time, rating, comment_text)
+            VALUE ('1', '1', '20', '2023-04-15 15:40:21', '5', 'I cant wait to go')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Comments(comment_id, event_id, user_id, comment_time, rating, comment_text)
+            VALUE ('2', '1', '3', '2023-04-15 16:00:21', '5', 'I cant wait either')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Comments(comment_id, event_id, user_id, comment_time, rating, comment_text)
+            VALUE ('3', '1', '2', '2023-04-16 15:40:21', '3', 'who else is going')";
+    $status = mysqli_query($connect, $sql);
     
     
     
