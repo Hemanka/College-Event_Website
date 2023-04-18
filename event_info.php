@@ -315,21 +315,28 @@
                                 $display_name_info = mysqli_fetch_array($display_name_result);
                             ?>
                             <p class="comment_user_name"><?php echo $display_name_info['user_fname'];?> <?php echo $display_name_info['user_lname'];?><p>
-                            <p>
-                                <?php
-                                    // F d Y
-                                    // j n Y
-                                    echo date("n/j/Y", strtotime($comment_info['comment_time']));
-                                ?>
-                            </p>
 
                             <!-- display the stars -->
-                            <span>Rated this event: <span>
-                            <?php for($i=0; $i < $comment_info['rating']; $i++) { ?>
-                                <span>&starf;</span>
-                            <?php } for($i=0; $i < (5 - $comment_info['rating']); $i++) { ?>
-                                <span>&star;</span>
-                            <?php }?>
+                            <div id="rating_and_time">
+                                <div>
+                                    <span>Rated this event: <span>
+                                    <?php for($i=0; $i < $comment_info['rating']; $i++) { ?>
+                                        <span>&starf;</span>
+                                    <?php } for($i=0; $i < (5 - $comment_info['rating']); $i++) { ?>
+                                        <span>&star;</span>
+                                    <?php }?>
+                                </div>
+                                <!-- time stamp -->
+                                <div>
+                                    <span>
+                                        <?php
+                                            // F d Y
+                                            // j n Y
+                                            echo date("n/j/Y", strtotime($comment_info['comment_time']));
+                                        ?>
+                                    </span>
+                                </div>
+                            </div>
 
                             <p><?php echo $comment_info['comment_text']?></p>
                             

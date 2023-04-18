@@ -41,6 +41,12 @@
         $rso_list_sql = "SELECT * FROM Rso R1 
                         WHERE R1.uni_id='$user_uni_id'
                                 AND R1.rso_id NOT IN (SELECT M1.rso_id FROM Member_rso M1 WHERE M1.user_id='$current_user_id')";
+
+        if (strcasecmp($_SESSION["current_user_role"], "Super Admin") == 0)
+        {
+            $rso_list_sql = "SELECT * FROM Rso R1 
+                        WHERE R1.rso_id NOT IN (SELECT M1.rso_id FROM Member_rso M1 WHERE M1.user_id='$current_user_id')";
+        }
         $rso_list_result = mysqli_query($connect, $rso_list_sql);
 
         $user_part_of_rso_list_sql = "SELECT * FROM Member_rso M1 WHERE M1.user_id='$current_user_id'";
@@ -101,13 +107,14 @@
         </div>
         <!-- form to join the rso -->
         <div id="join_rso_form" style="display: none;">
-            <form action="join_rso.php" method="post">
-                <h3>Join RSO</h1>
+            <div class="join_or_leave">
+            <form class="small_form" action="join_rso.php" method="post">
+                <h3>Join RSO</h3>
                 <!-- may change/ create new css class -->
-                <div class="login_form_text">
+                <!-- <div class="form_content"> -->
                     <!-- the user needs to choose a university -->
                     
-                    <label for="rso_to_join">Choose The RSO You Would Like To Join</label>
+                    <label for="rso_to_join">Choose the RSO you would like to join</label>
                     <select id="rso_to_join" name="rso_to_join" required>
                         <option value=""></option>
                         <?php while ($rso_list_info = mysqli_fetch_array($rso_list_result)) {?>
@@ -118,21 +125,23 @@
                     <br>
                     <br>
 
-                    <button name='submit' type="submit">Join</button>
-                </div>
+                <!-- </div> -->
+                    <button class="join_or_leave_action_button" name='submit' type="submit">Join</button>
             </form>
+            </div>
         </div>
 
         <!-- form to leave the rso -->
         <div id="leave_rso_form" style="display: none;">
             <!-- <p>display leave rso form</p> -->
-            <form action="leave_rso.php" method="post">
-                <h3>Leave RSO</h1>
+            <div class="join_or_leave">
+            <form class="small_form" action="leave_rso.php" method="post">
+                <h3>Leave RSO</h3>
                 <!-- may change/ create new css class -->
                 <div class="login_form_text">
                     <!-- the user needs to choose a university -->
                     
-                    <label for="rso_to_leave">Choose The RSO You Would Like To Leave</label>
+                    <label for="rso_to_leave">Choose the RSO you would like to leave</label>
                     <select id="rso_to_leave" name="rso_to_leave" required>
                         <option value=""></option>
                         <?php while ($user_part_of_rso_list_info = mysqli_fetch_array($user_part_of_rso_list_result)) {?>
@@ -143,9 +152,10 @@
                     <br>
                     <br>
 
-                    <button name='submit' type="submit">Leave</button>
+                    <button class="join_or_leave_action_button" name='submit' type="submit">Leave</button>
                 </div>
             </form>
+            </div>
         </div>
 
         <div id="rso_success_message_box" class="success_message">

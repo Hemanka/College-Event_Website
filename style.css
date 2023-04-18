@@ -21,6 +21,13 @@ body {
     /* text-align: left; */
 }
 
+.small_form {
+    background-color: #FDFAF6;
+    color: #064420;
+    border-radius: 25px;
+    padding: 20px;
+}
+
 .form_title {
     text-align: center;
 }
@@ -89,6 +96,17 @@ input {
 
 }
 
+.join_or_leave_action_button {
+    text-align: center;
+    border-radius: 5px;
+    /* margin:10px; */
+    padding: 10px 20px;
+    font-size: 17px;
+    /* border: none; */
+    border: solid 0.1px;
+    background-color: #E4EFE7;
+}
+
 #join_rso_button, #leave_rso_button, .go_back, .submit_button {
     text-align: center;
     border-radius: 5px;
@@ -101,7 +119,7 @@ input {
 
 }
 
-.login_button:hover, #join_rso_button:hover, #leave_rso_button:hover, .go_back:hover, .submit_button:hover {
+.login_button:hover, #join_rso_button:hover, #leave_rso_button:hover, .go_back:hover, .submit_button:hover, .comment_button:hover, .join_or_leave_action_button:hover {
     color: white;
     background-color: #064420;
 }
@@ -148,6 +166,14 @@ input {
     text-align: center;
     margin-left: 25%;
     margin-top: 12%;
+    color: #1B262C;
+}
+
+.join_or_leave {
+    width: 60%;
+    text-align: center;
+    margin-left: 21%;
+    margin-top: 3%;
     color: #1B262C;
 }
 
@@ -367,6 +393,7 @@ a:hover {
     border: none;
     background-color: #E4EFE7;
     border-radius: 5px;
+    border: solid 0.1px;
 }
 /* 
 .events_info {
@@ -419,4 +446,9 @@ a:hover {
     height: 500px;
     margin-left: 10px;
     border: solid 1px;
+}
+
+#rating_and_time {
+    display: flex;
+    justify-content: space-between;
 }
