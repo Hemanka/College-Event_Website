@@ -396,8 +396,8 @@
     // event_id = 1 - Public
     $sql = "INSERT INTO Events(event_id, event_name, event_cat, event_description, contact_number, contact_email, 
                                 event_date, start_time, end_time, loc_id, event_type)
-            VALUE ('1', 'Hackaton', 'Social', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', 
-                    '2023-04-24', '09:00:00', '10:00:00' , '1', 'Public')";
+            VALUE ('1', 'Hackathon', 'Social', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', 
+                    '2023-04-21', '09:00:00', '15:00:00' , '1', 'Public')";
     $status = mysqli_query($connect, $sql);
         // 28.601720028286387, -81.20040256091856
         // 28.60161641, -81.20045620
@@ -412,13 +412,13 @@
     $sql = "INSERT INTO Events(event_id, event_name, event_cat, event_description, contact_number, contact_email, 
                                 event_date, start_time, end_time, loc_id, event_type)
             VALUE ('17', 'Movie Night', 'Social', 'Join us on this fun event where we watch movie and have fun', '1142223333', 
-                    'junho@knights.ucf.edu', '2023-10-20', '20:00:00', '23:00:00', '1', 'Public')";
+                    'junho@knights.ucf.edu', '2023-04-20', '18:00:00', '21:00:00', '1', 'Public')";
     $status = mysqli_query($connect, $sql);
 
     $sql = "INSERT INTO Events(event_id, event_name, event_cat, event_description, contact_number, contact_email, 
                                 event_date, start_time, end_time, loc_id, event_type)
             VALUE ('20', 'Career Fair', 'Academic', 'Join us at the SU where you could network with other companies', '1142223333', 
-                    'junho@knights.ucf.edu', '2023-10-26', '20:00:00', '23:00:00', '1', 'Public')";
+                    'junho@knights.ucf.edu', '2023-10-26', '09:00:00', '13:00:00', '1', 'Public')";
     $status = mysqli_query($connect, $sql);
     
 
@@ -437,8 +437,8 @@
 
     $sql = "INSERT INTO Events(event_id, event_name, event_cat, event_description, contact_number, contact_email, 
                                 event_date, start_time, end_time, loc_id, event_type, uni_id)
-            VALUE ('5', 'Free Coffee and Study Space', 'Social', 'There would be free Coffee and study space for you to prepare for the finals',
-                '4412223333', 'olivia@knights.ucf.edu', '2023-04-19', '12:00:00', '16:00:00', '3', 'Private', '1')";
+            VALUE ('5', 'NASA Intership Information Session', 'Academic', 'At this event you will get information about the upcoming NASA Intership.',
+                '4412223333', 'olivia@knights.ucf.edu', '2023-04-19', '14:00:00', '15:00:00', '3', 'Private', '1')";
     $status = mysqli_query($connect, $sql);
 
     $sql = "INSERT INTO Events(event_id, event_name, event_cat, event_description, contact_number, contact_email, 
@@ -450,13 +450,13 @@
     $sql = "INSERT INTO Events(event_id, event_name, event_cat, event_description, contact_number, contact_email, 
                                 event_date, start_time, end_time, loc_id, event_type, uni_id)
             VALUE ('18', 'Jenga Battle', 'Social', 'Join us for this fun jenga battle',
-                '1112223333', 'josh@knights.ucf.edu', '2023-04-19', '12:00:00', '16:00:00', '1', 'Private', '1')";
+                '1112223333', 'josh@knights.ucf.edu', '2023-04-26', '19:00:00', '20:00:00', '1', 'Private', '1')";
     $status = mysqli_query($connect, $sql);
 
      $sql = "INSERT INTO Events(event_id, event_name, event_cat, event_description, contact_number, contact_email, 
                                 event_date, start_time, end_time, loc_id, event_type, uni_id)
             VALUE ('19', 'Study Abroad Fair', 'Academic', 'Join us on this informational section, where we learn about the study abroad program',
-                '1142223333', 'junho@knights.ucf.edu', '2023-04-19', '12:00:00', '16:00:00', '1', 'Private', '1')";
+                '1142223333', 'junho@knights.ucf.edu', '2023-04-19', '17:00:00', '18:00:00', '1', 'Private', '1')";
     $status = mysqli_query($connect, $sql);
 
     // event_id = 4 - Private: UF
@@ -499,7 +499,7 @@
 
     $sql = "INSERT INTO Events(event_id, event_name, event_cat, event_description, contact_number, contact_email, 
                                 event_date, start_time, end_time, loc_id, event_type, rso_id)
-            VALUE ('11', 'General Body Meeting', 'Social', 'Discuss our plan for the upcoming competition and chill at the field', '4992223333', 'jia@uf.edu', 
+            VALUE ('11', 'General Body Meeting For Debate Club', 'Social', 'Discuss our plan for the upcoming competition and chill at the field', '4412228333', 'jia@uf.edu', 
                     '2023-04-25', '18:00:00', '20:00:00', '4', 'Rso', '4')";
     $status = mysqli_query($connect, $sql);
 
