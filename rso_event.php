@@ -49,7 +49,9 @@
         }
         $rso_list_result = mysqli_query($connect, $rso_list_sql);
 
-        $user_part_of_rso_list_sql = "SELECT * FROM Member_rso M1 WHERE M1.user_id='$current_user_id'";
+        // $user_part_of_rso_list_sql = "SELECT * FROM Member_rso M1 WHERE M1.user_id='$current_user_id'";
+        $user_part_of_rso_list_sql = "SELECT * FROM Rso R1 
+                                        WHERE R1.rso_id IN (SELECT M1.rso_id FROM Member_rso M1 WHERE M1.user_id='$current_user_id')";
         $user_part_of_rso_list_result = mysqli_query($connect, $user_part_of_rso_list_sql);
 
         // $user_rso_result_numRows = mysqli_num_rows($user_rso_result);
@@ -145,7 +147,7 @@
                     <select id="rso_to_leave" name="rso_to_leave" required>
                         <option value=""></option>
                         <?php while ($user_part_of_rso_list_info = mysqli_fetch_array($user_part_of_rso_list_result)) {?>
-                            <option value="<?php echo $user_part_of_rso_list_info['rso_id']?>"><?php echo $user_part_of_rso_list_info['rso_id'];?></option>
+                            <option value="<?php echo $user_part_of_rso_list_info['rso_id']?>"><?php echo $user_part_of_rso_list_info['rso_name'];?></option>
                         <?php }?>
                     </select>
 

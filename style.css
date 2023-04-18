@@ -4,6 +4,7 @@ body {
     /* margin: 10px; */
 
     font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #064420;
 }
 
 .usersInfo {
@@ -451,4 +452,31 @@ a:hover {
 #rating_and_time {
     display: flex;
     justify-content: space-between;
+}
+
+.comment_user_name {
+    /* margin-top: 50px; */
+    /* margin: 200px; */
+    /* padding-top: 50px; */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.display_comments {
+    /* margin:10px; */
+    margin-left:20px;
+    margin-right:50px;
+    margin-top: 20px;
+    margin-bottom: 30px;;
+}
+
+#add_comment_div {
+    margin-left:20px;
+    /* margin-right:50px; */
+}
+
+.comment_divider {
+    border-radius: 1px;
+    border: solid 1px;
+    color: #064420;
 }

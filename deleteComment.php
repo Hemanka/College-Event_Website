@@ -32,7 +32,7 @@
         $sql = "DELETE FROM Comments WHERE comment_id='$current_comment_id'";
         $result = mysqli_query($connect, $sql);
     
-        header("location: event_info?$current_event_id");
+        header("location: event_info?$current_event_id#comment_section_starts");
     }
     else if (isset($_POST['edit_comment_button'])) 
     {
@@ -47,7 +47,7 @@
         $info = mysqli_fetch_array($result);
     
         $current_event_id = $info['event_id'];
-        header("location: event_info?$current_event_id");
+        header("location: event_info?$current_event_id#comment_section_starts");
     }
     // edit the comment
     else if (isset($_POST['edit_comment_done'])) 
@@ -64,14 +64,16 @@
         $comment_event_id = $info['event_id'];
         $comment_user_id = $info['user_id'];
 
-        // insert the new comment
-        $sql_insert = "INSERT INTO Comments(event_id, user_id, comment_text)
-                        VALUE ($comment_event_id, $comment_user_id, '$new_comment_text')";
-        $result_insert = mysqli_query($connect, $sql_insert);
+        // // insert the new comment
+        // $sql_insert = "INSERT INTO Comments(event_id, user_id, comment_text)
+        //                 VALUE ($comment_event_id, $comment_user_id, '$new_comment_text')";
+        // $result_insert = mysqli_query($connect, $sql_insert);
 
-        // delete the old comment
-        $sql_delete = "DELETE FROM Comments WHERE comment_id='$current_comment_id'";
-        $result_delete = mysqli_query($connect, $sql_delete);
+        // // delete the old comment
+        // $sql_delete = "DELETE FROM Comments WHERE comment_id='$current_comment_id'";
+        // $result_delete = mysqli_query($connect, $sql_delete);
+        $sql_update_comment = "UPDATE Comments SET comment_text='$new_comment_text' WHERE comment_id='$current_comment_id'";
+        $result_delete = mysqli_query($connect, $sql_update_comment);
 
         // get the event_id, so the previous page could be displayed
         unset($_SESSION['edit_comment_id']);
@@ -81,7 +83,7 @@
         // $info = mysqli_fetch_array($result);
     
         $current_event_id = $info['event_id'];
-        header("location: event_info?$comment_event_id");
+        header("location: event_info?$comment_event_id#comment_section_starts");
         // echo "editing....";
     }
     // echo "working...";

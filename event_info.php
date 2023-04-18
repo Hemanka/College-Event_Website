@@ -161,11 +161,14 @@
                 <iframe id="single_location" src="https://maps.google.com/maps?q=<?php echo $latitude;?>,<?php echo $longitude;?>&output=embed"></iframe>
             </div>
 
-            <h3>Comments:</h3>
+            <h3 id="comment_section_starts">Comments:</h3>
 
+            <hr class="comment_divider">
+
+            <!-- <div id="add_comment_div"> -->
             <!-- the user can add comments to the current event -->
             <?php if (!isset($_SESSION['edit_comment'])) {?>
-                <form action="addComment.php" method="post">
+                <form id="add_comment_div" action="addComment.php" method="post">
                     <!-- <label for="comment">Add Comments about this event</label> -->
 
                     <label for="rating">Rate this event: </label>
@@ -282,10 +285,11 @@
 
                     <br>
                     
-                    <textarea rows="4" cols="75" id="comment" name="comment"></textarea>
+                    <textarea id="get_comment_box" rows="4" cols="100" id="comment" name="comment"></textarea>
                     <button class="comment_button" type="submit" name="add_comment" value="<?php echo $info['event_id']?>">Add Comment</button>
                 </form>
             <?php }?>
+            <!-- </div> -->
 
             <!-- show comments that have been already made to this event -->
             <?php
@@ -314,7 +318,8 @@
                                 $display_name_result = mysqli_query($connect, $display_name_sql);
                                 $display_name_info = mysqli_fetch_array($display_name_result);
                             ?>
-                            <p class="comment_user_name"><?php echo $display_name_info['user_fname'];?> <?php echo $display_name_info['user_lname'];?><p>
+                            <span class="comment_user_name"><?php echo $display_name_info['user_fname'];?> <?php echo $display_name_info['user_lname'];?></span>
+                            <br>
 
                             <!-- display the stars -->
                             <div id="rating_and_time">

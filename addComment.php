@@ -32,7 +32,7 @@
     $result = mysqli_query($connect, $sql);
 
     // return back to the page where the user was previously
-    header("location: event_info?$current_event_id");
+    header("location: event_info?$current_event_id#comment_section_starts");
     // if($result)
     // {
     //     header("location: event_info?$current_event_id");
