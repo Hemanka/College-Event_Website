@@ -156,6 +156,11 @@ input {
     color: Black;
 }
 
+#start {
+    /* display: inline; */
+    display: flex;
+}
+
 /* .login_link {
     /* text-decoration: dashed; */
     /* font-style:; */

@@ -167,6 +167,121 @@
             <?php if (!isset($_SESSION['edit_comment'])) {?>
                 <form action="addComment.php" method="post">
                     <!-- <label for="comment">Add Comments about this event</label> -->
+
+                    <label for="rating">Rate this event: </label>
+                    <br>
+                    <div id = "start">
+                        <span onclick="rateOneStar()" id="star1">&star;</span>
+                        <span onclick="rateOneStar()" id="rate1" style="display: none;">&starf;</span>
+                        <span onclick="rateTwoStar()" id="star2">&star;</span>
+                        <span onclick="rateTwoStar()" id="rate2" style="display: none;">&starf;</span>
+                        <span onclick="rateThreeStar()" id="star3">&star;</span>
+                        <span onclick="rateThreeStar()" id="rate3" style="display: none;">&starf;</span>
+                        <span onclick="rateFourStar()" id="star4">&star;</span>
+                        <span onclick="rateFourStar()" id="rate4" style="display: none;">&starf;</span>
+                        <span onclick="rateFiveStar()" id="star5">&star;</span>
+                        <span onclick="rateFiveStar()" id="rate5" style="display: none;">&starf;</span>
+                    </div>
+                    <div id="don't_display" style="display: none;">
+                        <!-- <select id="rating" name="rating">
+                            <option value="1">1<?php?></option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select> -->
+                        <input type="text" id="rating" name="rating">
+                    </div>
+
+                    <script>
+                        function rateOneStar()
+                        {
+                            // empty starts
+                            document.getElementById("star1").style.display = "none";
+                            document.getElementById("star2").style.display = "block";
+                            document.getElementById("star3").style.display = "block";
+                            document.getElementById("star4").style.display = "block";
+                            document.getElementById("star5").style.display = "block";
+                            // the rating starts
+                            document.getElementById("rate1").style.display = "block";
+                            document.getElementById("rate2").style.display = "none";
+                            document.getElementById("rate3").style.display = "none";
+                            document.getElementById("rate4").style.display = "none";
+                            document.getElementById("rate5").style.display = "none";
+
+                            document.getElementById("rating").value = "1";
+                        }
+                        function rateTwoStar()
+                        {
+                            // empty starts
+                            document.getElementById("star1").style.display = "none";
+                            document.getElementById("star2").style.display = "none";
+                            document.getElementById("star3").style.display = "block";
+                            document.getElementById("star4").style.display = "block";
+                            document.getElementById("star5").style.display = "block";
+                            // the rating starts
+                            document.getElementById("rate1").style.display = "block";
+                            document.getElementById("rate2").style.display = "block";
+                            document.getElementById("rate3").style.display = "none";
+                            document.getElementById("rate4").style.display = "none";
+                            document.getElementById("rate5").style.display = "none";
+
+                            document.getElementById("rating").value = "2";
+                        }
+                        function rateThreeStar()
+                        {
+                            // empty starts
+                            document.getElementById("star1").style.display = "none";
+                            document.getElementById("star2").style.display = "none";
+                            document.getElementById("star3").style.display = "none";
+                            document.getElementById("star4").style.display = "block";
+                            document.getElementById("star5").style.display = "block";
+                            // the rating starts
+                            document.getElementById("rate1").style.display = "block";
+                            document.getElementById("rate2").style.display = "block";
+                            document.getElementById("rate3").style.display = "block";
+                            document.getElementById("rate4").style.display = "none";
+                            document.getElementById("rate5").style.display = "none";
+
+                            document.getElementById("rating").value = "3";
+                        }
+                        function rateFourStar()
+                        {
+                            // empty starts
+                            document.getElementById("star1").style.display = "none";
+                            document.getElementById("star2").style.display = "none";
+                            document.getElementById("star3").style.display = "none";
+                            document.getElementById("star4").style.display = "none";
+                            document.getElementById("star5").style.display = "block";
+                            // the rating starts
+                            document.getElementById("rate1").style.display = "block";
+                            document.getElementById("rate2").style.display = "block";
+                            document.getElementById("rate3").style.display = "block";
+                            document.getElementById("rate4").style.display = "block";
+                            document.getElementById("rate5").style.display = "none";
+
+                            document.getElementById("rating").value = "4";
+                        }
+                        function rateFiveStar()
+                        {
+                            // empty starts
+                            document.getElementById("star1").style.display = "none";
+                            document.getElementById("star2").style.display = "none";
+                            document.getElementById("star3").style.display = "none";
+                            document.getElementById("star4").style.display = "none";
+                            document.getElementById("star5").style.display = "none";
+                            // the rating starts
+                            document.getElementById("rate1").style.display = "block";
+                            document.getElementById("rate2").style.display = "block";
+                            document.getElementById("rate3").style.display = "block";
+                            document.getElementById("rate4").style.display = "block";
+                            document.getElementById("rate5").style.display = "block";
+
+                            document.getElementById("rating").value = "5";
+                        }
+                        
+                    </script>
+
+                    <br>
+                    
                     <textarea rows="4" cols="75" id="comment" name="comment"></textarea>
                     <button class="comment_button" type="submit" name="add_comment" value="<?php echo $info['event_id']?>">Add Comment</button>
                 </form>
@@ -193,6 +308,29 @@
                             <textarea rows="3" cols="75" id="edit_comment" name="edit_comment"><?php echo $comment_info['comment_text']?></textarea>
                             <button type="submit" name="edit_comment_done" value="<?php echo $comment_info['comment_id']?>">Done</button>
                         <?php } else {?>
+                            <?php 
+                                $current_comment_user_id_for_query = $comment_info['user_id'];
+                                $display_name_sql = "SELECT * FROM Users WHERE user_id='$current_comment_user_id_for_query'";
+                                $display_name_result = mysqli_query($connect, $display_name_sql);
+                                $display_name_info = mysqli_fetch_array($display_name_result);
+                            ?>
+                            <p class="comment_user_name"><?php echo $display_name_info['user_fname'];?> <?php echo $display_name_info['user_lname'];?><p>
+                            <p>
+                                <?php
+                                    // F d Y
+                                    // j n Y
+                                    echo date("n/j/Y", strtotime($comment_info['comment_time']));
+                                ?>
+                            </p>
+
+                            <!-- display the stars -->
+                            <span>Rated this event: <span>
+                            <?php for($i=0; $i < $comment_info['rating']; $i++) { ?>
+                                <span>&starf;</span>
+                            <?php } for($i=0; $i < (5 - $comment_info['rating']); $i++) { ?>
+                                <span>&star;</span>
+                            <?php }?>
+
                             <p><?php echo $comment_info['comment_text']?></p>
                             
                             <!-- if the comment is by the current user than they can delete the comment -->
@@ -202,9 +340,9 @@
                                                     (!isset($_SESSION['edit_comment']))) {
                             ?>
                                 <!-- edit and delete comments -->
-                                <button type="submit" name="edit_comment_button" value="<?php echo $comment_info['comment_id']?>">Edit Comment</button>
+                                <button type="submit" name="edit_comment_button" value="<?php echo $comment_info['comment_id']?>">Edit</button>
                                 <!-- <button onclick="window.location.href='deleteComment.php'">Delete Comment</button>-->
-                                <button type="submit" name="delete_comment" value="<?php echo $comment_info['comment_id']?>">Delete Comment</button>
+                                <button type="submit" name="delete_comment" value="<?php echo $comment_info['comment_id']?>">Delete</button>
                             <?php } ?>
                         <?php } ?>
                         <!-- </div> -->

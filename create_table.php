@@ -115,6 +115,8 @@
     $sql = "CREATE TABLE IF NOT EXISTS Comments(    comment_id INTEGER AUTO_INCREMENT,
                                                     event_id INTEGER NOT NULL,
                                                     user_id INTEGER NOT NULL,
+                                                    comment_time TIMESTAMP NOT NULL,
+                                                    rating INTEGER NOT NULL,
                                                     comment_text CHAR(100) NOT NULL,
                                                     PRIMARY KEY(comment_id),
                                                     FOREIGN KEY(event_id) REFERENCES Events(event_id),
@@ -133,11 +135,11 @@
     )";
     $status = mysqli_query($connect, $sql);
 
-    // // uni_id = 1
-    // $sql = "INSERT INTO University(uni_name, uni_address, uni_description, uni_email_domain) 
-    //         VALUE ('University of Central Florida', '4000 Central Florida Blvd, Orlando, Fl, 32816', 
-    //                 'Home of Knights', 'knights.ucf.edu')";
-    // $status = mysqli_query($connect, $sql);
+    // uni_id = 1
+    $sql = "INSERT INTO University(uni_id, uni_name, uni_address, uni_description, uni_email_domain) 
+            VALUE ('1', 'University of Central Florida', '4000 Central Florida Blvd, Orlando, Fl, 32816', 
+                    'Home of Knights', 'knights.ucf.edu')";
+    $status = mysqli_query($connect, $sql);
 
     // // uni_id = 2
     // $sql = "INSERT INTO University(uni_name, uni_address, uni_description, uni_email_domain) 
@@ -239,7 +241,7 @@
     //         VALUE ('5', '9')";
     // $status = mysqli_query($connect, $sql);
 
-    // location 1 - student union 
+    // // location 1 - student union 
     // $sql = "INSERT INTO Event_location(loc_name, latitude, longitude) 
     //         VALUE ('Student Union', '28.601720028286387', '-81.20040256091856')";
     // $status = mysqli_query($connect, $sql);
@@ -265,8 +267,8 @@
     // $status = mysqli_query($connect, $sql);
 
 
-    // -----USING this format---
-    // event_id = 1 - Public
+    // // -----USING this format---
+    // // event_id = 1 - Public
     // $sql = "INSERT INTO Events(event_name, event_cat, event_description, contact_number, contact_email, 
     //                             event_date, start_time, end_time, loc_id, event_type)
     //         VALUE ('Hackaton', 'Social', 'You can build your new projects', '1112223333', 'josh@knights.ucf.edu', 
