@@ -34,6 +34,10 @@
     $numRows = mysqli_num_rows($result);
 	if ($numRows < 1)
 	{
+		$_SESSION['error_message'] = "Invalid email address provided. Please provide valid email addresses";
+		// echo $_SESSION['error_message'];
+		header("location: create_rso_page.php");
+		die();
 		$valid_emails = FALSE;
 	}
 	else
@@ -48,6 +52,10 @@
     $numRows = mysqli_num_rows($result);
 	if ($numRows < 1)
 	{
+		$_SESSION['error_message'] = "Invalid email address provided. Please provide valid email addresses";
+		// echo $_SESSION['error_message'];
+		header("location: create_rso_page.php");
+		die();
 		$valid_emails = FALSE;
 	}
 	else
@@ -56,6 +64,10 @@
 		$first_user_id = $info['user_id'];
 		if ($rso_uni_id != $info['uni_id'])
 		{
+			$_SESSION['error_message'] = "'$first_user_email' does not have the same email domain as '$admin_user_email'";
+			// echo $_SESSION['error_message'];
+			header("location: create_rso_page.php");
+			die();
 			$valid_emails = FALSE;
 		}
 	}
@@ -65,6 +77,10 @@
     $numRows = mysqli_num_rows($result);
 	if ($numRows < 1)
 	{
+		$_SESSION['error_message'] = "Invalid email address provided. Please provide valid email addresses";
+		// echo $_SESSION['error_message'];
+		header("location: create_rso_page.php");
+		die();
 		$valid_emails = FALSE;
 	}
 	else
@@ -73,6 +89,10 @@
 		$second_user_id = $info['user_id'];
 		if ($rso_uni_id != $info['uni_id'])
 		{
+			$_SESSION['error_message'] = "'$second_user_email' does not have the same email domain as '$admin_user_email'";
+			// echo $_SESSION['error_message'];
+			header("location: create_rso_page.php");
+			die();
 			$valid_emails = FALSE;
 		}
 		
@@ -83,6 +103,10 @@
     $numRows = mysqli_num_rows($result);
 	if ($numRows < 1)
 	{
+		$_SESSION['error_message'] = "Invalid email address provided. Please provide valid email addresses";
+		// echo $_SESSION['error_message'];
+		header("location: create_rso_page.php");
+		die();
 		$valid_emails = FALSE;
 	}
 	else
@@ -91,6 +115,10 @@
 		$third_user_id = $info['user_id'];
 		if ($rso_uni_id != $info['uni_id'])
 		{
+			$_SESSION['error_message'] = "'$third_user_email' does not have the same email domain as '$admin_user_email'";
+			// echo $_SESSION['error_message'];
+			header("location: create_rso_page.php");
+			die();
 			$valid_emails = FALSE;
 		}
 	}
@@ -100,6 +128,10 @@
     $numRows = mysqli_num_rows($result);
 	if ($numRows < 1)
 	{
+		$_SESSION['error_message'] = "Invalid email address provided. Please provide valid email addresses";
+		// echo $_SESSION['error_message'];
+		header("location: create_rso_page.php");
+		die();
 		$valid_emails = FALSE;
 	}
 	else
@@ -108,6 +140,10 @@
 		$fourth_user_id = $info['user_id'];
 		if ($rso_uni_id != $info['uni_id'])
 		{
+			$_SESSION['error_message'] = "'$fourth_user_email' does not have the same email domain as '$admin_user_email'";
+			// echo $_SESSION['error_message'];
+			header("location: create_rso_page.php");
+			die();
 			$valid_emails = FALSE;
 		}
 	}
@@ -168,6 +204,17 @@
 	// update the role of the admin of this rso to 'Admin' if they are not already an admin
 	$update_role_sql = "UPDATE Users SET user_role='Admin' WHERE user_id = '$this_rso_admin_id'";
 	$update_role_result = mysqli_query($connect, $update_role_sql); 
+
+	if ($this_rso_admin_id)
+	if (strcasecmp(($_SESSION["current_user_id"]), $this_rso_admin_id) == 0)
+	{
+		$current_user_id_in_create = $_SESSION["current_user_id"];
+		$assing_role_sql = "SELECT * FROM Users WHERE user_id='$current_user_id_in_create'";
+		$assing_role_result = mysqli_query($connect, $assing_role_sql);
+		$assing_role_info = mysqli_fetch_array($assing_role_result);
+		unset($_SESSION['current_user_role']);
+		$_SESSION["current_user_role"] = $assing_role_info["user_role"];
+	}
 
 	$connect->close();
 
