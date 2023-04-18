@@ -19,6 +19,7 @@ body {
     color: #064420;
     border-radius: 25px;
     padding: 35px;
+    margin-bottom: 50px;
     /* text-align: left; */
 }
 
@@ -120,7 +121,8 @@ input {
 
 }
 
-.login_button:hover, #join_rso_button:hover, #leave_rso_button:hover, .go_back:hover, .submit_button:hover, .comment_button:hover, .join_or_leave_action_button:hover {
+.login_button:hover, #join_rso_button:hover, #leave_rso_button:hover, .go_back:hover, .submit_button:hover, 
+.comment_button:hover, .join_or_leave_action_button:hover, .done_button:hover {
     color: white;
     background-color: #064420;
 }
@@ -465,10 +467,16 @@ a:hover {
 .display_comments {
     /* margin:10px; */
     margin-left:20px;
-    margin-right:50px;
+    margin-right:40px;
     margin-top: 20px;
-    margin-bottom: 30px;;
+    margin-bottom: 30px;
+    padding: 5px;
+    /* border: solid 1px; */
 }
+
+/* .display_comments:hover {
+    border: solid 1px;
+} */
 
 #add_comment_div {
     margin-left:20px;
@@ -479,4 +487,27 @@ a:hover {
     border-radius: 1px;
     border: solid 1px;
     color: #064420;
+}
+
+.done_button {
+    margin-left: 0.5%;
+    padding: 1.5% 1.0%;
+    vertical-align: top;
+    font-size: 20px;
+    /* border: none; */
+    background-color: #E4EFE7;
+    border-radius: 5px;
+    border: solid 0.1px;
+}
+
+.edit_delete_button {
+    /* margin-left: 0.5%; */
+    margin-right : 5px;
+    padding: 0.8% 1%;
+    vertical-align: top;
+    font-size: 13px;
+    /* border: none; */
+    background-color: #E4EFE7;
+    border-radius: 5px;
+    border: solid 0.1px;
 }

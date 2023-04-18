@@ -41,7 +41,7 @@
         $edit_comment_result = mysqli_query($connect, $edit_comment_sql);   
         $edit_comment_info = mysqli_fetch_array($edit_comment_result);
 
-        echo "<br>success";
+        // echo "<br>success";
     }
 ?>
 
@@ -306,11 +306,12 @@
                         <!-- an option would to show the comments as 'comment 1' and so on -->
                         <!-- <div class=comment_text> -->
                         <!-- <?php echo "in the if stmt";?> -->
+                        
                         <?php if (isset($_SESSION['edit_comment']) && 
                                     (strcasecmp(($comment_info['comment_id']), ($_SESSION['edit_comment_id'])) == 0)) {?>
                             <!-- <?php echo "in the if stmt";?> -->
-                            <textarea rows="3" cols="75" id="edit_comment" name="edit_comment"><?php echo $comment_info['comment_text']?></textarea>
-                            <button type="submit" name="edit_comment_done" value="<?php echo $comment_info['comment_id']?>">Done</button>
+                            <textarea rows="3" cols="100" id="edit_comment" name="edit_comment"><?php echo $comment_info['comment_text']?></textarea>
+                            <button class="done_button" type="submit" name="edit_comment_done" value="<?php echo $comment_info['comment_id']?>">Done</button>
                         <?php } else {?>
                             <?php 
                                 $current_comment_user_id_for_query = $comment_info['user_id'];
@@ -352,9 +353,9 @@
                                                     (!isset($_SESSION['edit_comment']))) {
                             ?>
                                 <!-- edit and delete comments -->
-                                <button type="submit" name="edit_comment_button" value="<?php echo $comment_info['comment_id']?>">Edit</button>
+                                <button class="edit_delete_button" type="submit" name="edit_comment_button" value="<?php echo $comment_info['comment_id']?>">Edit</button>
                                 <!-- <button onclick="window.location.href='deleteComment.php'">Delete Comment</button>-->
-                                <button type="submit" name="delete_comment" value="<?php echo $comment_info['comment_id']?>">Delete</button>
+                                <button class="edit_delete_button" type="submit" name="delete_comment" value="<?php echo $comment_info['comment_id']?>">Delete</button>
                             <?php } ?>
                         <?php } ?>
                         <!-- </div> -->
