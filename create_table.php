@@ -196,6 +196,47 @@
              VALUE ('10', 'Adam', 'Will', 'Student', '1', 'adam@knights.ucf.edu', 'adam')";
     $status = mysqli_query($connect, $sql);
 
+    // user_id = 11 -- student
+    $sql = "INSERT INTO Users(user_id, user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+             VALUE ('11', 'Bree', 'Ballard', 'Student', '1', 'bree@knights.ucf.edu', 'bree')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Users(user_id, user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+             VALUE ('12', 'Jerome', 'Smith', 'Student', '1', 'Jerome@knights.ucf.edu', 'Jerome')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Users(user_id, user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+             VALUE ('13', 'Orion', 'Blake', 'Student', '1', 'Orion@knights.ucf.edu', 'Orion')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Users(user_id, user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+             VALUE ('14', 'Erica', 'Janet', 'Student', '2', 'Erica@uf.edu', 'Erica')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Users(user_id, user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+             VALUE ('15', 'Sameel', 'Siddiqi', 'Student', '2', 'Sameel@uf.edu', 'Sameel')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Users(user_id, user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+             VALUE ('16', 'Jeetsuki', 'Kun', 'Student', '2', 'Jeetsuki@uf.edu', 'Jeetsuki')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Users(user_id, user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+             VALUE ('17', 'Junkook', 'Bee-tee-es', 'Student', '1', 'Junkook@knights.ucf.edu', 'Junkook')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Users(user_id, user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+             VALUE ('18', 'Pegasus', 'Seiya', 'Student', '1', 'Pegasus@knights.ucf.edu', 'Pegasus')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Users(user_id, user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+             VALUE ('19', 'Shiryu', 'Duragon', 'Super Admin', '2', 'Shiryu@uf.edu', 'Shiryu')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Users(user_id, user_fname, user_lname, user_role, uni_id, user_email, user_password) 
+             VALUE ('20', 'Altec', 'Lansing', 'Student', '1', 'Altec@knights.ucf.edu', 'Altec')";
+    $status = mysqli_query($connect, $sql);
+
     // rso_id = 1
     $sql = "INSERT INTO Rso(rso_id, rso_name, rso_status, admin_id, uni_id) 
             VALUE ('1', 'Robotics Club', 'Active', '2', '1')";
@@ -203,6 +244,22 @@
 
     $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
             VALUE ('1', '1', '2')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('2', '1', '1')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('3', '1', '3')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('4', '1', '8')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('5', '1', '10')";
     $status = mysqli_query($connect, $sql);
 
     // rso_id = 2
@@ -214,6 +271,22 @@
             VALUE ('6', '2', '3')";
     $status = mysqli_query($connect, $sql);
 
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('7', '2', '1')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('8', '2', '11')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('9', '2', '12')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('10', '2', '13')";
+    $status = mysqli_query($connect, $sql);
+
     // rso_id = 3
     $sql = "INSERT INTO Rso(rso_id, rso_name, rso_status, admin_id, uni_id) 
             VALUE ('3', 'Outdoors Club', 'Active', '8', '1')";
@@ -221,6 +294,22 @@
 
     $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
             VALUE ('11', '3', '8')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('12', '3', '17')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('13', '3', '18')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('14', '3', '20')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('15', '3', '1')";
     $status = mysqli_query($connect, $sql);
 
     // rso_id = 4
@@ -232,6 +321,22 @@
             VALUE ('16', '4', '6')";
     $status = mysqli_query($connect, $sql);
 
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('17', '4', '4')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('18', '4', '5')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('19', '4', '14')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('20', '4', '15')";
+    $status = mysqli_query($connect, $sql);
+
     // rso_id = 5
     $sql = "INSERT INTO Rso(rso_id, rso_name, rso_status, admin_id, uni_id) 
             VALUE ('5', 'Video Games Club', 'Active', '9', '2')";
@@ -239,6 +344,26 @@
 
     $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
             VALUE ('20', '5', '9')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('21', '5', '4')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('22', '5', '5')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('23', '5', '6')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('24', '5', '16')";
+    $status = mysqli_query($connect, $sql);
+
+    $sql = "INSERT INTO Member_rso(member_id, rso_id, user_id) 
+            VALUE ('25', '5', '14')";
     $status = mysqli_query($connect, $sql);
 
     // location 1 - student union 
