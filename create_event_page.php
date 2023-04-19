@@ -1,15 +1,3 @@
-<!-- 
-    CHECK to see if the query runs fine for getting the list of rso
-    
-    NEED TO DO:
-    - get info about rso event
-    - get infor about private event
-
-    AFTER THIS:
-    - start working on a create_event file, where the input from this page would be used
-
- -->
-
 <?php
     session_start();
 
