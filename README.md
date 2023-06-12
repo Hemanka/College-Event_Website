@@ -13,6 +13,6 @@ This website simulates how students/ administrators would be able to host events
 
 ## Features
 - Create/ join Registered Student Organizations (RSO)
-- Create Public, Private, or RSO events
+- Create/ join Public, Private, or RSO events
 - Event overlap prevention
-- Student, admin, super-admin roles each with different permissions- 
+- Student, admin, super-admin roles each with different permissions
